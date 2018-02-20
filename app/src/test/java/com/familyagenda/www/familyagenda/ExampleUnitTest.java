@@ -1,4 +1,4 @@
-package com.example.helidia.familyagenda;
+package com.familyagenda.www.familyagenda;
 
 import org.junit.Test;
 
