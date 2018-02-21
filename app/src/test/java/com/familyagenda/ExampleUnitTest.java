@@ -1,4 +1,4 @@
-package com.familyagenda.www.familyagenda;
+package com.familyagenda;
 
 import org.junit.Test;
 
