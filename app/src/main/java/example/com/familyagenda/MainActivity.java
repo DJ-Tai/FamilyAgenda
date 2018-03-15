@@ -1,8 +1,11 @@
 package example.com.familyagenda;
 
+import android.app.Fragment;
+import android.app.FragmentManagerNonConfig;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -95,23 +98,38 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_calendar)
         {
-            // Handle the camera action
+            setTitle("Calendar");
+            Calendar calendar = new Calendar();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.fragment, calendar).commit();
         }
         else if (id == R.id.nav_groceries)
         {
-
+            setTitle("Groceries");
+            Groceries groceries = new Groceries();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.fragment, groceries).commit();
         }
         else if (id == R.id.nav_todo)
         {
-
+            setTitle("ToDo");
+            ToDo todo = new ToDo();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.fragment, todo).commit();
         }
         else if (id == R.id.nav_chores)
         {
-
+            setTitle("Chores");
+            Chores chores = new Chores();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.fragment, chores).commit();
         }
         else if (id == R.id.nav_settings)
         {
-
+            setTitle("Settings");
+            Settings settings = new Settings();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.fragment, settings).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
