@@ -8,9 +8,11 @@
     tools:context="example.com.familyagenda.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
+    <!-- This gets replaced via Nav Menu selection -->
     <FrameLayout
         android:id="@+id/fragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        android:layout_height="match_parent">
+    </FrameLayout>
 
 </RelativeLayout>
