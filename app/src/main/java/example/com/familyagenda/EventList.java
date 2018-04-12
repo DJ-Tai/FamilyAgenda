@@ -19,7 +19,9 @@ public class EventList {
 
     private static void addEvent(String eventTitle,
                                    String desc, boolean repeats, int startTimeHour, int startTimeMinute,
-                                    int endTimeHour, int endTimeMinute)
+                                    int endTimeHour, int endTimeMinute){
+
+    }
 
     public static List<String> getProductNames() {
         List<String> list = new ArrayList<>();
