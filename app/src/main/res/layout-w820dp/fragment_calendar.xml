@@ -12,9 +12,8 @@
         android:layout_height="match_parent"
         android:minHeight="250dp" />
 
-
     <ListView
-        android:id="@+id/event_list"
+        android:id="@+id/list_events"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/event_title"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Title "/>
+
+    <TextView
+        android:id="@+id/event_desc"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:text="Description"/>
+
+    <!-- As many text views as we need
+    * @param startTimeHour   - Hour(in military time) that the event starts
+    * @param startTimeMinute - Minute that the event starts
+    * @param endTimeHour     - Hour(in military time) that the event ends
+    * @param endTimeMinute   - Minute that the event ends
+    -->
+    <!-- START TIME -->
+    <TextView
+        android:id="@+id/event_start_hour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HH"/>
+    <TextView
+        android:id="@+id/event_start_mins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MM"/>
+
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="until"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/event_end_hour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HH"/>
+    <TextView
+        android:id="@+id/event_end_mins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MM"/>
+
+</LinearLayout>
