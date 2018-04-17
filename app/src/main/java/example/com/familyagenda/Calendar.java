@@ -3,16 +3,12 @@ package example.com.familyagenda;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-
-import static android.R.layout.simple_list_item_1;
 
 
 /**
@@ -20,8 +16,6 @@ import static android.R.layout.simple_list_item_1;
  */
 public class Calendar extends Fragment
 {
-    public static final String MESSAGE_KEY = "message_key";
-
     public Calendar()
     {
         // Required empty public constructor
@@ -33,20 +27,26 @@ public class Calendar extends Fragment
     {
         // View to be returned and referenced, i.e., DON'T DELETE ME
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
+        EventAdapter adapter;
+        ListView listView;
 
-        // Sample Data
-        ArrayList<String> items = new ArrayList<>();
-        for (int i = 0; i < 20; i++)
-        {
-            items.add("yoyo" + Integer.toString(i));
-        }
+        // Construct data source
+        ArrayList<Event> events = new ArrayList<>();
+        events.add(new Event("Birthday Party", "Evan's Birthday Party",
+                                20, 4, 2018, true,
+                                10,0,18,0));
 
-        // Pushing data to ListView
-        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this.getContext(), simple_list_item_1, items);
-        ListView listView = view.findViewById(R.id.event_list);
-        listView.setAdapter(itemsAdapter);
+        events.add(new Event("Soccer Game", "CSULB vs CSUF",
+                                22, 4, 2018, false,
+                                10,30,13,0));
+
+        // Create adapter
+        adapter = new EventAdapter((this.getContext()), events);
+        listView = view.findViewById(R.id.list_events);
+        listView.setAdapter(adapter);
 
         return view;
     }
 
+    // TODO: Get CalendarView as a interactable object
 }
