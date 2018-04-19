@@ -8,8 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -32,15 +35,15 @@ public class Chores extends Fragment {
         /*
         This area takes care of the displaying of the chores
          */
-        ArrayList<Chore> chores = new ArrayList<>();
+        final ArrayList<Chore> chores = new ArrayList<>();
 
         chores.add(new Chore("Laundry", 2017, 4, 17, false));
         chores.add(new Chore("Dishes", 2017, 4, 17, false));
         chores.add(new Chore("Feed the dog", 2017, 4, 17, false));
 
         //Creating an ArrayList to easily access every text object in the chores tab
-        ArrayList<TextView> textViews = new ArrayList<>();
-        TextView tempT1, tempT2, tempT3, TempT3, tempT4, tempT5, tempT6, tempT7, tempT8, tempT9, tempT10;
+        final ArrayList<TextView> textViews = new ArrayList<>();
+        TextView tempT1, tempT2, tempT3, tempT4, tempT5, tempT6, tempT7, tempT8, tempT9, tempT10;
 
         tempT1 = (TextView) view.findViewById(R.id.textView1);
         tempT2 = (TextView) view.findViewById(R.id.textView2);
@@ -66,26 +69,33 @@ public class Chores extends Fragment {
 
         for (int i = 0; i < chores.size(); i++) {
             TextView temp = textViews.get(i);
+            temp.setTextSize(25);
             temp.setText(chores.get(i).getName());
         }
 
         /*
-        This area will take care of the pop up to create a new chore
+        This area will take care of adding in a new chore
          */
 
-        Button bAddChore = (Button) view.findViewById(R.id.addButton);
+        Button bAddChore = (Button) view.findViewById(R.id.bAddChore);
+        final EditText bChoreName = (EditText) view.findViewById(R.id.choreName);
+
         bAddChore.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
-                View mView = getLayoutInflater().inflate(R.layout.dialog_add_chore, null);
+            @Override
+            public void onClick(View view) {
+                String choreName = bChoreName.getText().toString();
+                bChoreName.setText("");
+                chores.add(new Chore(choreName, 2017, 4,17, false ));
 
-                mBuilder.setView(mView);
-                AlertDialog dialog = mBuilder.create();
-                dialog.show();
+                for (int i = 0; i < chores.size(); i++) {
+                    TextView temp = textViews.get(i);
+                    temp.setTextSize(25);
+                    temp.setText(chores.get(i).getName());
+                }
             }
-
-
         });
+
+
 
 
         return view;
