@@ -9,4 +9,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="today">Today</string>
+    <string name="add_chore">ADD CHORE</string>
+    <string name="add">Add</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_date">Enter Date</string>
+    <string name="reapeat_task">Reapeat Task</string>
 </resources>

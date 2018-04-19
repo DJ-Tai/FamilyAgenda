@@ -1,11 +1,13 @@
 package example.com.familyagenda;
 
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -25,9 +27,11 @@ public class Chores extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_chores, container, false);
 
+        /*
+        This area takes care of the displaying of the chores
+         */
         ArrayList<Chore> chores = new ArrayList<>();
 
         chores.add(new Chore("Laundry", 2017, 4, 17, false));
@@ -65,7 +69,24 @@ public class Chores extends Fragment {
             temp.setText(chores.get(i).getName());
         }
 
-        // Inflate the layout for this fragment
+        /*
+        This area will take care of the pop up to create a new chore
+         */
+
+        Button bAddChore = (Button) view.findViewById(R.id.addButton);
+        bAddChore.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
+                View mView = getLayoutInflater().inflate(R.layout.dialog_add_chore, null);
+
+                mBuilder.setView(mView);
+                AlertDialog dialog = mBuilder.create();
+                dialog.show();
+            }
+
+
+        });
+
 
         return view;
 
