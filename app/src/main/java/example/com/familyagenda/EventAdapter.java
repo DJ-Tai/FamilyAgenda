@@ -51,7 +51,6 @@ public class EventAdapter extends ArrayAdapter<Event>
         tvEndHr.setText(Integer.toString(event.getEndTimeHour()));
         tvEndMin.setText(Integer.toString(event.getEndTimeMinute()));
 
-
         return convertView;
     }
 }
