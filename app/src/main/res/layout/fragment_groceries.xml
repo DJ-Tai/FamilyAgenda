@@ -4,10 +4,11 @@
     android:layout_height="match_parent"
     tools:context="example.com.familyagenda.Groceries">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ListView
+        android:id="@+id/groceries_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Groceries" />
+        android:layout_gravity="left">
+    </ListView>
 
 </FrameLayout>
