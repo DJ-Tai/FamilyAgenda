@@ -27,4 +27,5 @@ public final class FamilyAgendaContract {
 
     static final String SQL_DELETE_GROCERIES =
             "DROP TABLE IF EXISTS " + FamilyAgendaGroceries.TABLE_NAME;
+
 }
