@@ -86,6 +86,20 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="50dp"
+                android:layout_height="54dp"
+                android:gravity="left"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:drawable/ic_menu_close_clear_cancel" />
+
+            </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 
