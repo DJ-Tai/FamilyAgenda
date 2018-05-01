@@ -133,6 +133,12 @@ public class Groceries extends Fragment implements View.OnClickListener {
                     Toast.makeText(getContext(), "Button was clicked for list item " + position, Toast.LENGTH_SHORT).show();
                 }
             });
+            mainViewholder.checkBox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getContext(), "CheckBox was clicked for list item " + position, Toast.LENGTH_SHORT).show();
+                }
+            });
             mainViewholder.title.setText(getItem(position));
 
             return convertView;
