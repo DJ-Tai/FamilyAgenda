@@ -2,6 +2,7 @@ package example.com.familyagenda;
 
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -12,8 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,7 +81,7 @@ public class Groceries extends Fragment implements View.OnClickListener {
         dbHelper = new FamilyAgendaDbHelper(getContext());
         ListView lv = (ListView) view.findViewById(R.id.groceries_list);
         fetchGroceriesList();
-        arrayAdapter = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_list_item_1, groceries);
+        arrayAdapter = new GroceriesItemList(view.getContext(), R.layout.groceries_items_list, groceries);
         lv.setAdapter(arrayAdapter);
 
         Button b = (Button) view.findViewById(R.id.btnAddItem);
@@ -99,5 +103,44 @@ public class Groceries extends Fragment implements View.OnClickListener {
             default:
                 break;
         }
+    }
+
+    private class GroceriesItemList extends ArrayAdapter<String> {
+        private int layout;
+        private List<String> mObjects;
+        private GroceriesItemList(Context context, int resource, List<String> objects) {
+            super(context, resource, objects);
+            mObjects = objects;
+            layout = resource;
+        }
+
+        @Override
+        public View getView(final int position, View convertView, ViewGroup parent) {
+            ViewHolder mainViewholder = null;
+            if(convertView == null) {
+                LayoutInflater inflater = LayoutInflater.from(getContext());
+                convertView = inflater.inflate(layout, parent, false);
+                ViewHolder viewHolder = new ViewHolder();
+                viewHolder.checkBox = (CheckBox) convertView.findViewById(R.id.list_item_checkBox);
+                viewHolder.title = (TextView) convertView.findViewById(R.id.list_item_text);
+                viewHolder.button = (Button) convertView.findViewById(R.id.list_item_remove);
+                convertView.setTag(viewHolder);
+            }
+            mainViewholder = (ViewHolder) convertView.getTag();
+            mainViewholder.button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getContext(), "Button was clicked for list item " + position, Toast.LENGTH_SHORT).show();
+                }
+            });
+            mainViewholder.title.setText(getItem(position));
+
+            return convertView;
+        }
+    }
+    public class ViewHolder {
+        TextView title;
+        CheckBox checkBox;
+        Button button;
     }
 }
