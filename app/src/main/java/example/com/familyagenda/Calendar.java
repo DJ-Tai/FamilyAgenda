@@ -4,7 +4,6 @@ package example.com.familyagenda;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,13 +43,10 @@ public class Calendar extends Fragment
         CalendarView calendarView;
 
         // Set date currently showing above the Calendar Events list
-        // TODO: THIS WORKS BUT IT MAKES IT MAD SLOW. DEBUGGING.
-//        char[] deviceDate = getDate();
-//        TextView dateTv = view.findViewById(R.id.tv_date_sel);
-//        dateTv.setText(deviceDate, 0, deviceDate.length);
+        char[] deviceDate = getDate();
+        TextView dateTv = view.findViewById(R.id.tv_date_sel);
+        dateTv.setText(deviceDate, 0, deviceDate.length);
 
-
-        // TODO: DEBUGGING CALENDAR VIEW
         calendarView = view.findViewById(R.id.calendar_view);
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener()
@@ -67,6 +63,7 @@ public class Calendar extends Fragment
                 tv.setText(charDate, 0, charDate.length);
 
                 // TODO: Use date change to grab events associated with the date selected
+                // TODO: Incorporate DB access
             }
         });
 
@@ -95,83 +92,94 @@ public class Calendar extends Fragment
         return view;
     }
 
-//    /**
-//     * Get the date as a char[] for setting the TextView
-//     *
-//     * @return - Date as a char[]
-//     */
-//    public char[] getDate()
-//    {
-//        java.util.Date deviceDate = java.util.Calendar.getInstance().getTime();
-//        String[] splitDate = deviceDate.toString().split(" ");
-//
-//        String month = splitDate[1];
-//        month = getMonthNum(month);
-//        String day = splitDate[2];
-//        if (day.charAt(0) == '0')
-//        {
-//            day = new String(day.substring(1,2));
-//        }
-//
-//        String year = splitDate[5];
-//        String convertedDate = new String(month + "/" + day + "/" + year);
-//
-//        char[] forTextView = convertedDate.toCharArray();
-//
-//        return forTextView;
-//    }
-//
-//    /**
-//     * Gets the month as a number
-//     *
-//     * @param month - Name of month
-//     * @return - Month number [01:12]
-//     */
-//    public String getMonthNum(String month)
-//    {
-//        String num;
-//
-//        switch (month)
-//        {
-//            case "January":
-//                num = "1";
-//                break;
-//            case "February":
-//                num = "2";
-//                break;
-//            case "March":
-//                num = "3";
-//                break;
-//            case "April":
-//                num = "4";
-//                break;
-//            case "May":
-//                num = "5";
-//                break;
-//            case "June":
-//                num = "6";
-//                break;
-//            case "July":
-//                num = "7";
-//                break;
-//            case "August":
-//                num = "8";
-//                break;
-//            case "September":
-//                num = "9";
-//                break;
-//            case "October":
-//                num = "10";
-//                break;
-//            case "November":
-//                num = "11";
-//                break;
-//            default:
-//                num = "12";
-//                break;
-//        }
-//
-//        return new String(num);
-//    }
+    /**
+     * Get the date as a char[] for setting the TextView
+     *
+     * @return - Date as a char[]
+     */
+    public char[] getDate()
+    {
+        /* Placeholders for month, day, year, and combined date separated by backslashes */
+        String month, day, year, formattedDate;
+
+        /* Used to grab only the necessary parts of the java.util.Date */
+        String[] splitDeviceDate;
+
+        /* Date req'd to be char[] for inserting into a TextView */
+        char[] forTextView;
+
+        /* References the device's date */
+        java.util.Date deviceDate;
+
+        deviceDate = java.util.Calendar.getInstance().getTime();
+        splitDeviceDate = deviceDate.toString().split(" ");
+
+        month = getMonthNum(splitDeviceDate[1]);
+        day = splitDeviceDate[2];
+        if (day.charAt(0) == '0')
+        {
+            day = new String(day.substring(1,2));
+        }
+        year = splitDeviceDate[5];
+
+        formattedDate = new String(month + "/" + day + "/" + year);
+
+        forTextView = formattedDate.toCharArray();
+
+        return forTextView;
+    }
+
+    /**
+     * Gets the month as a number
+     *
+     * @param month - Name of month
+     * @return - Month number, starting at 1
+     */
+    public String getMonthNum(String month)
+    {
+        String num;
+
+        switch (month)
+        {
+            case "January":
+                num = "1";
+                break;
+            case "February":
+                num = "2";
+                break;
+            case "March":
+                num = "3";
+                break;
+            case "April":
+                num = "4";
+                break;
+            case "May":
+                num = "5";
+                break;
+            case "June":
+                num = "6";
+                break;
+            case "July":
+                num = "7";
+                break;
+            case "August":
+                num = "8";
+                break;
+            case "September":
+                num = "9";
+                break;
+            case "October":
+                num = "10";
+                break;
+            case "November":
+                num = "11";
+                break;
+            default:
+                num = "12";
+                break;
+        }
+
+        return new String(num);
+    }
 
 }
