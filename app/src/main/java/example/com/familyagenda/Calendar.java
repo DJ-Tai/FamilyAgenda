@@ -118,11 +118,11 @@ public class Calendar extends Fragment
         day = splitDeviceDate[2];
         if (day.charAt(0) == '0')
         {
-            day = new String(day.substring(1,2));
+            day = day.substring(1, 2);
         }
         year = splitDeviceDate[5];
 
-        formattedDate = new String(month + "/" + day + "/" + year);
+        formattedDate = month + "/" + day + "/" + year;
 
         forTextView = formattedDate.toCharArray();
 
