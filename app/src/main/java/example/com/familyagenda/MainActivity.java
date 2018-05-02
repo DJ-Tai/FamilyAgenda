@@ -87,9 +87,18 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        // Open Settings fragment
         if (id == R.id.action_settings)
         {
+            setTitle("Settings");
+            Settings settings = new Settings();
+
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager
+                    .beginTransaction()
+                    .replace(R.id.fragment, settings)
+                    .commit();
+
             return true;
         }
 
