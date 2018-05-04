@@ -180,6 +180,7 @@ public class Event
     }
 
 
+    // TODO: Not finished
     public ContentValues toValues()
     {
         ContentValues values = new ContentValues(); // Parameter = Number of columns in DB

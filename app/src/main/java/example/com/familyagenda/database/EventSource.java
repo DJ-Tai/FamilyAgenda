@@ -39,5 +39,5 @@ public class EventSource
     {
         mDbHelper.close();
     }
-    
+
 }

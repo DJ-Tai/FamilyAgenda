@@ -14,6 +14,9 @@ public class EventList
     public static List<Event> eventList = new ArrayList<>();
     public static Map<String, Event> eventMap = new HashMap<>();
 
+    /**
+     * Empty static constructor
+     */
     static { }
 
     private static void addEvent(String eventTitle, String desc, boolean repeats, int startTimeHour,

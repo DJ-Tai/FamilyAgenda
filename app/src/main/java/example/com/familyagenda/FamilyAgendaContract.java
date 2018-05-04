@@ -36,7 +36,7 @@ public final class FamilyAgendaContract
     public static class FamilyAgendaEvents implements BaseColumns
     {
         static final String TABLE_NAME = "events";
-        static final String COLUMN_ID = "eventId";
+        static final String COLUMN_ID = "eventId";  // Unsure if we'll need this
         static final String COLUMN_TITLE = "eventTitle";
         static final String COLUMN_DESC = "description";
         static final String COLUMN_START = "startTime";

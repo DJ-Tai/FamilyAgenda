@@ -23,6 +23,9 @@ public class Calendar extends Fragment
 {
     public static final String TAG = "CalendarDebug";
 
+    /**
+     * For DB communication
+     */
     EventSource mEventSource;
 
     public Calendar()
@@ -40,7 +43,6 @@ public class Calendar extends Fragment
         /* Database reference */
         mEventSource = new EventSource(this.getContext());
         mEventSource.open();
-
         // TODO: Delete after it works
         Toast.makeText(this.getContext(), "Database Acquired!", Toast.LENGTH_SHORT).show();
 
@@ -53,13 +55,17 @@ public class Calendar extends Fragment
         /* References the CalendarView in the UI */
         CalendarView calendarView;
 
-        // Set date currently showing above the Calendar Events list
-        char[] deviceDate = getDate();
-        TextView dateTv = view.findViewById(R.id.tv_date_sel);
-        dateTv.setText(deviceDate, 0, deviceDate.length);
+        /* Holds date of the user's device (char[] req'd for setting text in TextView) */
+        char[] deviceDate;
+
+        /* TextView where date is displayed above listed Events */
+        TextView tvDate;
+
+        deviceDate = getDate();
+        tvDate = view.findViewById(R.id.tv_date_sel);
+        tvDate.setText(deviceDate, 0, deviceDate.length);
 
         calendarView = view.findViewById(R.id.calendar_view);
-
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener()
         {
             @Override
@@ -78,12 +84,11 @@ public class Calendar extends Fragment
             }
         });
 
-        // TODO: BELOW -\/ connect via Database
+        // TODO: Below connect via Database
         ArrayList<Event> events = new ArrayList<>();
         createTestData(events);
 
         // TODO: Add click-to-edit events
-        // Grab list of events and display them
         adapter = new EventAdapter((this.getContext()), events);
         listView = view.findViewById(R.id.list_events);
         listView.setAdapter(adapter);

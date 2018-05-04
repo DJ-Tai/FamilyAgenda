@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+
 public class EventAdapter extends ArrayAdapter<Event>
 {
     /**
@@ -36,7 +37,7 @@ public class EventAdapter extends ArrayAdapter<Event>
                             .inflate(R.layout.list_events, parent, false);
         }
 
-        // Lookup View for data population
+        // Lookup TextView's for data population
         TextView tvTitle = convertView.findViewById(R.id.event_title);
         TextView tvDesc = convertView.findViewById(R.id.event_desc);
         TextView tvStartHr = convertView.findViewById(R.id.event_start_hour);
@@ -44,20 +45,30 @@ public class EventAdapter extends ArrayAdapter<Event>
         TextView tvEndHr = convertView.findViewById(R.id.event_end_hour);
         TextView tvEndMin = convertView.findViewById(R.id.event_end_mins);
 
-        // TODO: Ensure time is shown with 4 numbers, e.g., 10:00 or 07:00
-        setTwoDigitTime(event, tvTitle, tvDesc, tvStartHr, tvStartMin, tvEndHr, tvEndMin);
+        tvTitle.setText(event.getTitle());
+        tvDesc.setText(event.getDesc());
+
+        setTwoDigitTime(event, tvStartHr, tvStartMin, tvEndHr, tvEndMin);
 
         return convertView;
     }
 
-    public void setTwoDigitTime(Event mEvent, TextView title, TextView desc, TextView startHr,
-                                TextView startMin, TextView endHr, TextView endMin)
+    /**
+     * Converts the integer times to two-digit Strings
+     *
+     * @param mEvent    - Event object
+     * @param startHr   - Start time's hour
+     * @param startMin  - Start time's minute
+     * @param endHr     - End time's hour
+     * @param endMin    - End time's minute
+     */
+    public void setTwoDigitTime(Event mEvent, TextView startHr, TextView startMin,
+                                TextView endHr, TextView endMin)
     {
+        /* For setting the TextView text */
         String strTime;
+        /* Time stored in Event object */
         int time;
-
-        title.setText(mEvent.getTitle());
-        desc.setText(mEvent.getDesc());
 
         time = mEvent.getStartTimeHour();
         strTime = (time < 10 && time >= 0) ? ("0" + Integer.toString(time)) : Integer.toString(time);
