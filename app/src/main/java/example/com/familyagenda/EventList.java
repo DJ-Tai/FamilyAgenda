@@ -14,18 +14,16 @@ public class EventList
     public static List<Event> eventList = new ArrayList<>();
     public static Map<String, Event> eventMap = new HashMap<>();
 
-    static
-    {
-        //        addEvent("Do Laundry", "Evan", false);
-    }
+    static { }
 
     private static void addEvent(String eventTitle, String desc, boolean repeats, int startTimeHour,
                                  int startTimeMinute,
                                  int endTimeHour, int endTimeMinute)
     {
-        // TODO
+        // TODO: Implement addEvent method
     }
 
+    // TODO: Figure out if the methods below are even implemented
     public static List<String> getProductNames()
     {
         List<String> list = new ArrayList<>();
@@ -35,11 +33,10 @@ public class EventList
         }
         return list;
     }
-
     public static List<Event> getFilteredList(String searchString)
     {
-
         List<Event> filteredList = new ArrayList<>();
+
         for (Event product : eventList)
         {
             if (product.getTitle().contains(searchString))
@@ -49,7 +46,6 @@ public class EventList
         }
 
         return filteredList;
-
     }
 
 }

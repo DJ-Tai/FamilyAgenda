@@ -10,7 +10,7 @@
 
         <TextView
             android:id="@+id/event_title"
-            android:layout_width="500dp"
+            android:layout_width="450dp"
             android:minWidth="350dp"
             android:layout_height="wrap_content"
             android:minHeight="30dp"
@@ -20,7 +20,7 @@
 
         <TextView
             android:id="@+id/event_desc"
-            android:layout_width="500dp"
+            android:layout_width="450dp"
             android:minWidth="350dp"
             android:layout_height="match_parent"
             android:minHeight="100dp"
@@ -53,7 +53,7 @@
     <TextView
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:text="until"
+        android:text="-"
         android:textAlignment="center"
         android:textSize="16sp" />
 

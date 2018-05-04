@@ -44,13 +44,35 @@ public class EventAdapter extends ArrayAdapter<Event>
         TextView tvEndHr = convertView.findViewById(R.id.event_end_hour);
         TextView tvEndMin = convertView.findViewById(R.id.event_end_mins);
 
-        tvTitle.setText(event.getTitle());
-        tvDesc.setText(event.getDesc());
-        tvStartHr.setText(Integer.toString(event.getStartTimeHour()));
-        tvStartMin.setText(Integer.toString(event.getStartTimeMinute()));
-        tvEndHr.setText(Integer.toString(event.getEndTimeHour()));
-        tvEndMin.setText(Integer.toString(event.getEndTimeMinute()));
+        // TODO: Ensure time is shown with 4 numbers, e.g., 10:00 or 07:00
+        setTwoDigitTime(event, tvTitle, tvDesc, tvStartHr, tvStartMin, tvEndHr, tvEndMin);
 
         return convertView;
+    }
+
+    public void setTwoDigitTime(Event mEvent, TextView title, TextView desc, TextView startHr,
+                                TextView startMin, TextView endHr, TextView endMin)
+    {
+        String strTime;
+        int time;
+
+        title.setText(mEvent.getTitle());
+        desc.setText(mEvent.getDesc());
+
+        time = mEvent.getStartTimeHour();
+        strTime = (time < 10 && time >= 0) ? ("0" + Integer.toString(time)) : Integer.toString(time);
+        startHr.setText(strTime);
+
+        time = mEvent.getStartTimeMinute();
+        strTime = (time < 10 && time >= 0) ? ("0" + Integer.toString(time)) : Integer.toString(time);
+        startMin.setText(strTime);
+
+        time = mEvent.getEndTimeHour();
+        strTime = (time < 10 && time >= 0) ? ("0" + Integer.toString(time)) : Integer.toString(time);
+        endHr.setText(strTime);
+
+        time = mEvent.getEndTimeMinute();
+        strTime = (time < 10 && time >= 0) ? ("0" + Integer.toString(time)) : Integer.toString(time);
+        endMin.setText(strTime);
     }
 }
