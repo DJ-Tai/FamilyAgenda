@@ -14,15 +14,17 @@
         android:id="@+id/list_item_checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
-        android:layout_toLeftOf="@id/list_item_remove"/>
+        android:layout_alignParentEnd="true"
+        android:text=""/>
 
+<!--
+        android:layout_toLeftOf="@id/list_item_remove"
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Remove"
         android:id="@+id/list_item_remove"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"/>-->
 
 
 </RelativeLayout>
