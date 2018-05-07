@@ -36,25 +36,47 @@ public class Chores extends Fragment {
         This area takes care of the displaying of the chores
          */
         final ArrayList<Chore> chores = new ArrayList<>();
+        final ArrayList<Button> buttonList = new ArrayList<>();
 
-        chores.add(new Chore("Laundry", 2017, 4, 17, false));
-        chores.add(new Chore("Dishes", 2017, 4, 17, false));
-        chores.add(new Chore("Feed the dog", 2017, 4, 17, false));
+//        chores.add(new Chore("Laundry"));
 
         //Creating an ArrayList to easily access every text object in the chores tab
         final ArrayList<TextView> textViews = new ArrayList<>();
         TextView tempT1, tempT2, tempT3, tempT4, tempT5, tempT6, tempT7, tempT8, tempT9, tempT10;
+        Button tempB1, tempB2, tempB3, tempB4, tempB5, tempB6, tempB7, tempB8, tempB9, tempB10;
 
-        tempT1 = (TextView) view.findViewById(R.id.textView1);
-        tempT2 = (TextView) view.findViewById(R.id.textView2);
-        tempT3 = (TextView) view.findViewById(R.id.textView3);
-        tempT4 = (TextView) view.findViewById(R.id.textView4);
-        tempT5 = (TextView) view.findViewById(R.id.textView5);
-        tempT6 = (TextView) view.findViewById(R.id.textView6);
-        tempT7 = (TextView) view.findViewById(R.id.textView7);
-        tempT8 = (TextView) view.findViewById(R.id.textView8);
-        tempT9 = (TextView) view.findViewById(R.id.textView9);
-        tempT10 = (TextView) view.findViewById(R.id.textView10);
+//        tempB1 = view.findViewById((R.id.button1));
+//        tempB2 = view.findViewById((R.id.button2));
+//        tempB3 = view.findViewById((R.id.button3));
+//        tempB4 = view.findViewById((R.id.button4));
+//        tempB5 = view.findViewById((R.id.button5));
+//        tempB6 = view.findViewById((R.id.button6));
+//        tempB7 = view.findViewById((R.id.button7));
+//        tempB8 = view.findViewById((R.id.button8));
+//        tempB9 = view.findViewById((R.id.button9));
+//        tempB10 = view.findViewById((R.id.button10));
+//
+//        buttonList.add(tempB1);
+//        buttonList.add(tempB2);
+//        buttonList.add(tempB3);
+//        buttonList.add(tempB4);
+//        buttonList.add(tempB5);
+//        buttonList.add(tempB6);
+//        buttonList.add(tempB7);
+//        buttonList.add(tempB8);
+//        buttonList.add(tempB9);
+//        buttonList.add(tempB10);
+//
+//        tempT1 = view.findViewById(R.id.textView1);
+//        tempT2 = view.findViewById(R.id.textView2);
+//        tempT3 = view.findViewById(R.id.textView3);
+//        tempT4 = view.findViewById(R.id.textView4);
+//        tempT5 = view.findViewById(R.id.textView5);
+//        tempT6 = view.findViewById(R.id.textView6);
+//        tempT7 = view.findViewById(R.id.textView7);
+//        tempT8 = view.findViewById(R.id.textView8);
+//        tempT9 = view.findViewById(R.id.textView9);
+//        tempT10 = view.findViewById(R.id.textView10);
 
         textViews.add(tempT1);
         textViews.add(tempT2);
@@ -67,11 +89,17 @@ public class Chores extends Fragment {
         textViews.add(tempT9);
         textViews.add(tempT10);
 
+//        for (int i = 0; i < chores.size(); i++) {
+//            Button tempButton = buttonList.get(i);
+//            tempButton.setVisibility(View.VISIBLE);
+//        }
+
         for (int i = 0; i < chores.size(); i++) {
             TextView temp = textViews.get(i);
             temp.setTextSize(25);
             temp.setText(chores.get(i).getName());
         }
+
 
         /*
         This area will take care of adding in a new chore
@@ -85,7 +113,7 @@ public class Chores extends Fragment {
             public void onClick(View view) {
                 String choreName = bChoreName.getText().toString();
                 bChoreName.setText("");
-                chores.add(new Chore(choreName, 2017, 4,17, false ));
+                chores.add(new Chore(choreName));
 
                 for (int i = 0; i < chores.size(); i++) {
                     TextView temp = textViews.get(i);
@@ -94,7 +122,6 @@ public class Chores extends Fragment {
                 }
             }
         });
-
 
 
 
