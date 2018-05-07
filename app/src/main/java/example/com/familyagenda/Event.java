@@ -6,30 +6,36 @@ package example.com.familyagenda;
 
 import android.content.ContentValues;
 
+import java.util.UUID;
+
+import example.com.familyagenda.database.EventsTable;
+
 /**
  * Event objects for the Calendar
  */
 public class Event
 {
+    /* Item ID for Database */
+    private String eventId;
+
     /* Event Title */
-    private String title;
+    private String eventTitle;
 
     /* Event Description */
     private String desc;
 
     /* Event Date */
-    // TODO: Figure out getter and setter for these variables
     private int year;
     private int month;
     private int dayOfMonth;
 
-    /* Start time */
-    private int startTimeHour;
-    private int startTimeMinute;
-
-    /* End time */
-    private int endTimeHour;
-    private int endTimeMinute;
+    /* Event Start and End times */
+    private int startHour;
+    private int startMinute;
+    private String startTime;
+    private int endHour;
+    private int endMinute;
+    private String endTime;
 
     /* If the Event repeats or not */
     private boolean repeats;
@@ -37,44 +43,74 @@ public class Event
     /**
      * Default (empty) constructor
      */
-    public Event()
-    {
-    }
+    public Event() { }
 
     /**
      * Custom constructor
      *
+     * @param id              - Unique ID
      * @param title           - Title of event
      * @param desc            - Description of event
      * @param repeats         - Event is repeatable
-     * @param startTimeHour   - Hour(in military time) that the event starts
-     * @param startTimeMinute - Minute that the event starts
-     * @param endTimeHour     - Hour(in military time) that the event ends
-     * @param endTimeMinute   - Minute that the event ends
+     * @param startHour   - Hour(in military time) that the event starts
+     * @param startMinute - Minute that the event starts
+     * @param endHour     - Hour(in military time) that the event ends
+     * @param endMinute   - Minute that the event ends
      */
-    public Event(String title, String desc, int dayOfMonth, int month,
-                 int year, boolean repeats, int startTimeHour,
-                 int startTimeMinute, int endTimeHour, int endTimeMinute)
+    public Event(String id, String title, String desc, int dayOfMonth, int month,
+                 int year, boolean repeats, int startHour,
+                 int startMinute, int endHour, int endMinute)
     {
-        this.title = title;
+        if (id == null)
+        {
+            id = UUID.randomUUID().toString();
+        }
+
+        this.eventId = id;
+        this.eventTitle = title;
         this.desc = desc;
         this.repeats = repeats;
         this.dayOfMonth = dayOfMonth;
         this.month = month;
         this.year = year;
-        this.startTimeHour = startTimeHour;
-        this.startTimeMinute = startTimeMinute;
-        this.endTimeHour = endTimeHour;
-        this.endTimeMinute = endTimeMinute;
+        this.startHour = startHour;
+        this.startMinute = startMinute;
+        this.endHour = endHour;
+        this.endMinute = endMinute;
+
+        this.formatStartAndEndTimes();
+    }
+
+    /**
+     * Formats the Event time to a readable format
+     */
+    private void formatStartAndEndTimes()
+    {
+        String start_h = (startHour >= 0 && startHour < 10) ?
+                            "0" + String.valueOf(startHour) : String.valueOf(startHour);
+
+        String start_m = (startMinute >= 0 && startMinute < 10) ?
+                        "0" + String.valueOf(startMinute) : String.valueOf(startMinute);
+
+        String end_h = (endHour >= 0 && endHour < 10) ?
+                        "0" + String.valueOf(endHour) : String.valueOf(endHour);
+
+        String end_m = (endMinute >= 0 && endMinute < 10) ?
+                        "0" + String.valueOf(endMinute) : String.valueOf(endMinute);
+
+        this.startTime = start_h + ":" + start_m;
+        this.endTime = end_h + ":" + end_m;
     }
 
     /* -------------- */
     /* GETTER METHODS */
     /*                */
     /* ============== */
-    public String getTitle()
+    public String getEventId() { return eventId; }
+
+    public String getEventTitle()
     {
-        return title;
+        return eventTitle;
     }
 
     public String getDesc()
@@ -102,33 +138,39 @@ public class Event
         return year;
     }
 
-    public int getStartTimeHour()
+    public int getStartHour()
     {
-        return startTimeHour;
+        return startHour;
     }
 
-    public int getStartTimeMinute()
+    public int getStartMinute()
     {
-        return startTimeMinute;
+        return startMinute;
     }
 
-    public int getEndTimeHour()
+    public String getStartTime() { return startTime; }
+
+    public int getEndHour()
     {
-        return endTimeHour;
+        return endHour;
     }
 
-    public int getEndTimeMinute()
+    public int getEndMinute()
     {
-        return endTimeMinute;
+        return endMinute;
     }
+
+    public String getEndTime() { return endTime; }
 
     /* -------------- */
     /* SETTER METHODS */
     /*                */
     /* ============== */
-    public void setTitle(String newTitle)
+    public void setEventId(String newId) { eventId = newId; }
+
+    public void setEventTitle(String newTitle)
     {
-        title = newTitle;
+        eventTitle = newTitle;
     }
 
     public void setDesc(String newDesc)
@@ -159,33 +201,56 @@ public class Event
         year = newYear;
     }
 
-    public void setStartTimeHour(int newStartTimeHour)
+    public void setStartHour(int newStartTimeHour)
     {
-        startTimeHour = newStartTimeHour;
+        startHour = newStartTimeHour;
     }
 
-    public void setStartTimeMinute(int newStartTimeMinute)
+    public void setStartMinute(int newStartTimeMinute)
     {
-        startTimeMinute = newStartTimeMinute;
+        startMinute = newStartTimeMinute;
     }
 
-    public void setEndTimeHour(int newEndTimeHour)
+    public void setEndHour(int newEndTimeHour)
     {
-        endTimeHour = newEndTimeHour;
+        endHour = newEndTimeHour;
     }
 
-    public void setEndTimeMinute(int newEndTimeMinute)
+    public void setEndMinute(int newEndTimeMinute)
     {
-        endTimeMinute = newEndTimeMinute;
+        endMinute = newEndTimeMinute;
     }
 
+    public void setStartTime(int s_h, int s_m)
+    {
+        this.startHour = s_h;
+        this.startMinute = s_m;
+        this.formatStartAndEndTimes();
+    }
 
-    // TODO: Not finished
+    public void setEndTime(int e_h, int e_m)
+    {
+        this.endHour = e_h;
+        this.endMinute = e_m;
+        this.formatStartAndEndTimes();
+    }
+
+    /**
+     * Creates an Event as a ContentValues object to use with SQLiteDatabase
+     *
+     * @return values - Event as a ContentValues object
+     */
     public ContentValues toValues()
     {
-        ContentValues values = new ContentValues(); // Parameter = Number of columns in DB
+        ContentValues values = new ContentValues(5);    // 5 = number of columns in Calendar Table
 
+        values.put(EventsTable.COLUMN_ID, eventId);
+        values.put(EventsTable.COLUMN_TITLE, eventTitle);
+        values.put(EventsTable.COLUMN_DESC, desc);
+        values.put(EventsTable.COLUMN_START_TIME, getStartTime());
+        values.put(EventsTable.COLUMN_END_TIME, getEndTime());
 
         return values;
     }
+
 }

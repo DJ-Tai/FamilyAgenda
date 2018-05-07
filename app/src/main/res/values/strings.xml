@@ -14,6 +14,11 @@
     <string name="add_item">Add Item</string>
     <string name="enter_a_new_item">Enter a new item</string>
     <string name="btn_add_event">Add Event</string>
+    <string name="event_title">Title</string>
+    <string name="event_description">Description</string>
+    <string name="text_start_time">START</string>
+    <string name="text_time_sep">-</string>
+    <string name="text_end_time">END</string>
     <string-array name="hour_times">
         <item>12</item>
         <item>1</item>

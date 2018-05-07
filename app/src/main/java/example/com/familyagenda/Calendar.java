@@ -10,11 +10,11 @@ import android.view.ViewGroup;
 import android.widget.CalendarView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
+import java.util.List;
 
-import example.com.familyagenda.database.EventSource;
+import example.com.familyagenda.database.EventDataSource;
+import example.com.familyagenda.test.SampleDataProvider;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,10 +23,11 @@ public class Calendar extends Fragment
 {
     public static final String TAG = "CalendarDebug";
 
-    /**
-     * For DB communication
-     */
-    EventSource mEventSource;
+    List<Event> eventList = SampleDataProvider.eventList;
+    List<Event> listFromDB;
+
+    /* For DB communication */
+    EventDataSource mEventDataSource;
 
     public Calendar()
     {
@@ -41,10 +42,11 @@ public class Calendar extends Fragment
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
 
         /* Database reference */
-        mEventSource = new EventSource(this.getContext());
-        mEventSource.open();
-        // TODO: Delete after it works
-        Toast.makeText(this.getContext(), "Database Acquired!", Toast.LENGTH_SHORT).show();
+        mEventDataSource = new EventDataSource(this.getContext());
+        mEventDataSource.open();
+        mEventDataSource.seedDatabase(eventList);
+
+        listFromDB = mEventDataSource.getAllItems();
 
         /* Custom Adapter for Event class */
         EventAdapter adapter;
@@ -84,12 +86,8 @@ public class Calendar extends Fragment
             }
         });
 
-        // TODO: Below connect via Database
-        ArrayList<Event> events = new ArrayList<>();
-        createTestData(events);
-
         // TODO: Add click-to-edit events
-        adapter = new EventAdapter((this.getContext()), events);
+        adapter = new EventAdapter((this.getContext()), listFromDB);
         listView = view.findViewById(R.id.list_events);
         listView.setAdapter(adapter);
 
@@ -100,14 +98,14 @@ public class Calendar extends Fragment
     public void onPause()
     {
         super.onPause();
-        mEventSource.close();
+        mEventDataSource.close();
     }
 
     @Override
     public void onResume()
     {
         super.onResume();
-        mEventSource.open();
+        mEventDataSource.open();
     }
 
     /**
@@ -198,26 +196,6 @@ public class Calendar extends Fragment
         }
 
         return new String(num);
-    }
-
-    // TODO: Delete if unecessary later
-    public void createTestData(ArrayList<Event> events)
-    {
-        events.add(new Event("Birthday Party", "Description of Evan's Birthday Party",
-                             20, 4, 2018, true,
-                             10, 00, 18, 00));
-
-        events.add(new Event("Soccer Game", "Description of CSULB vs CSUF Soccer Game",
-                             22, 4, 2018, false,
-                             10, 30, 13, 0));
-        events.add(new Event("Basketball Game", "Description of CSULB vs CSUF Basketball Game",
-                             10, 6, 2018, false,
-                             10, 30, 13, 30));
-        events.add(new Event("Coding Session", "Something about Coding and What Not and Coffee",
-                             4, 5, 2018, false,
-                             7, 30, 9, 0));
-        events.add(new Event("Morning Run", "Go out for a morning run", 4, 4, 2018, false
-                , 7, 0, 8, 0));
     }
 
 }

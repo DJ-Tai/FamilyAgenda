@@ -9,66 +9,46 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/event_title"
+            android:id="@+id/tv_event_title"
             android:layout_width="450dp"
             android:minWidth="350dp"
             android:layout_height="wrap_content"
             android:minHeight="30dp"
-            android:text="Title "
+            android:text="@string/event_title"
             android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/event_desc"
+            android:id="@+id/tv_event_desc"
             android:layout_width="450dp"
             android:minWidth="350dp"
             android:layout_height="match_parent"
             android:minHeight="100dp"
-            android:text="Description"
+            android:text="@string/event_description"
             android:textSize="16sp" />
     </LinearLayout>
 
 
-    <!-- As many text views as we need
-    * @param startTimeHour   - Hour(in military time) that the event starts
-    * @param startTimeMinute - Minute that the event starts
-    * @param endTimeHour     - Hour(in military time) that the event ends
-    * @param endTimeMinute   - Minute that the event ends
-    -->
-    <!-- START TIME -->
+    <!-- Display Time -->
     <TextView
-        android:id="@+id/event_start_hour"
+        android:id="@+id/event_start_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="HH"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/event_start_mins"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MM"
-        android:textSize="16sp" />
+        android:text="@string/text_start_time"
+        android:textSize="16sp"/>
 
     <TextView
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:text="-"
+        android:text="@string/text_time_sep"
         android:textAlignment="center"
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/event_end_hour"
+        android:id="@+id/event_end_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="HH"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/event_end_mins"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MM"
-        android:textSize="16sp" />
+        android:text="@string/text_end_time"
+        android:textSize="16sp"/>
 
 </LinearLayout>

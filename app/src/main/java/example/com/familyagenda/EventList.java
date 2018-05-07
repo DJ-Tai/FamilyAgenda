@@ -32,7 +32,7 @@ public class EventList
         List<String> list = new ArrayList<>();
         for (Event product : eventList)
         {
-            list.add(product.getTitle());
+            list.add(product.getEventTitle());
         }
         return list;
     }
@@ -42,7 +42,7 @@ public class EventList
 
         for (Event product : eventList)
         {
-            if (product.getTitle().contains(searchString))
+            if (product.getEventTitle().contains(searchString))
             {
                 filteredList.add(product);
             }
