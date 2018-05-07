@@ -7,22 +7,22 @@
         <item
             android:id="@+id/nav_calendar"
             android:icon="@drawable/ic_menu_calendar_24px"
-            android:title="Calendar" />
+            android:title="@string/drawer_calendar" />
         <item
             android:id="@+id/nav_groceries"
             android:icon="@drawable/ic_menu_groceries_24px"
-            android:title="Groceries" />
+            android:title="@string/drawer_groceries" />
         <item
             android:id="@+id/nav_todo"
             android:icon="@drawable/ic_menu_todo_24px"
-            android:title="To Do" />
+            android:title="@string/drawer_to_do" />
         <item
             android:id="@+id/nav_chores"
             android:icon="@drawable/ic_menu_chores_24px"
-            android:title="Chores" />
+            android:title="@string/drawer_chores" />
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_menu_settings_24px"
-            android:title="Settings" />
+            android:title="@string/drawer_settings" />
     </group>
 </menu>
