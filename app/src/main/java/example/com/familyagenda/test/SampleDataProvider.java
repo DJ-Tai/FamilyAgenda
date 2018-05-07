@@ -17,21 +17,21 @@ public class SampleDataProvider
         eventMap = new HashMap<>();
 
         addEvent(new Event(null, "Birthday Party", "Description of Evan's Birthday Party",
-                             20, 4, 2018, true,
-                             10, 00, 18, 00));
+                             4, 20, 2018, true,
+                             10, 0, 18, 0));
 
         addEvent(new Event(null,"Soccer Game", "Description of CSULB vs CSUF Soccer Game",
-                             22, 4, 2018, false,
-                             10, 30, 13, 00));
+                             4, 22, 2018, false,
+                             10, 30, 13, 0));
         addEvent(new Event(null,"Basketball Game", "Description of CSULB vs CSUF Basketball Game",
-                             10, 6, 2018, false,
+                             6, 10, 2018, false,
                              10, 30, 13, 30));
         addEvent(new Event(null,"Coding Session", "Something about Coding and What Not and Coffee",
-                             4, 5, 2018, false,
-                             7, 30, 9, 00));
+                             5, 4, 2018, false,
+                             7, 30, 9, 0));
         addEvent(new Event(null,"Morning Run", "Go out for a morning run",
                              4, 4, 2018, false, 7,
-                             00, 8, 00));
+                             0, 8, 0));
     }
 
     private static void addEvent(Event event)

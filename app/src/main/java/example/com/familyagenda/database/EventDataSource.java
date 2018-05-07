@@ -17,7 +17,7 @@ import example.com.familyagenda.FamilyAgendaDbHelper;
 
 
 /**
- * EventDataSource talks to the SQLiteOpenHelper
+ * EventDataSource is the only class that talks to the SQLiteOpenHelper class
  */
 public class EventDataSource
 {
@@ -100,20 +100,34 @@ public class EventDataSource
      *
      * @return eventItems - Events from the Database as a List
      */
-    public List<Event> getAllItems()
+    public List<Event> getAllItems(int month, int day, int year)
     {
         List<Event> eventItems = new ArrayList<>();
+        Cursor cursor = null;
+        String[] date = { String.valueOf(month),
+                          String.valueOf(day),
+                          String.valueOf(year) };
 
-        Cursor cursor = mDatabase.query(EventsTable.TABLE_NAME, EventsTable.ALL_COLUMNS, null, null,
-                                        null, null,
-                                        null);
+        cursor = mDatabase.query(EventsTable.TABLE_NAME,
+                                 EventsTable.ALL_COLUMNS,
+                                 EventsTable.COLUMN_MONTH + " = ? AND "
+                                    + EventsTable.COLUMN_DAY + " = ? AND "
+                                    + EventsTable.COLUMN_YEAR + " = ?",
+                                    date,
+                                 null,
+                                 null,
+                                 EventsTable.COLUMN_START_TIME + " DESC");
 
+        // TODO: Verify why the COLUMN_START_TIME needs to be in DESCending order
         while (cursor.moveToNext())
         {
             Event event = new Event();
             event.setEventId(cursor.getString(cursor.getColumnIndex(EventsTable.COLUMN_ID)));
             event.setEventTitle(cursor.getString(cursor.getColumnIndex(EventsTable.COLUMN_TITLE)));
             event.setDesc(cursor.getString(cursor.getColumnIndex(EventsTable.COLUMN_DESC)));
+            event.setDayOfMonth(cursor.getInt(cursor.getColumnIndex(EventsTable.COLUMN_DAY)));
+            event.setMonth(cursor.getInt(cursor.getColumnIndex(EventsTable.COLUMN_MONTH)));
+            event.setYear(cursor.getInt(cursor.getColumnIndex(EventsTable.COLUMN_YEAR)));
 
             String time = cursor.getString(cursor.getColumnIndex(EventsTable.COLUMN_START_TIME));
             String[] h_m = time.split(":");
@@ -134,6 +148,9 @@ public class EventDataSource
             eventItems.add(event);
         }
 
+        cursor.close();
+
         return eventItems;
     }
+
 }

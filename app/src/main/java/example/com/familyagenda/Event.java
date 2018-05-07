@@ -33,6 +33,7 @@ public class Event
     private int startHour;
     private int startMinute;
     private String startTime;
+
     private int endHour;
     private int endMinute;
     private String endTime;
@@ -57,9 +58,11 @@ public class Event
      * @param endHour     - Hour(in military time) that the event ends
      * @param endMinute   - Minute that the event ends
      */
-    public Event(String id, String title, String desc, int dayOfMonth, int month,
-                 int year, boolean repeats, int startHour,
-                 int startMinute, int endHour, int endMinute)
+    public Event(String id, String title, String desc,
+                 int month, int dayOfMonth, int year,
+                 boolean repeats,
+                 int startHour, int startMinute,
+                 int endHour, int endMinute)
     {
         if (id == null)
         {
@@ -70,9 +73,11 @@ public class Event
         this.eventTitle = title;
         this.desc = desc;
         this.repeats = repeats;
-        this.dayOfMonth = dayOfMonth;
+        // Date
         this.month = month;
+        this.dayOfMonth = dayOfMonth;
         this.year = year;
+        // Time
         this.startHour = startHour;
         this.startMinute = startMinute;
         this.endHour = endHour;
@@ -180,7 +185,7 @@ public class Event
 
     public void changeRepetitive()
     {
-        repeats = (repeats) ? false : true;
+        repeats = !repeats;
     }
 
     public void setDayOfMonth(int newDay)
@@ -200,6 +205,7 @@ public class Event
     {
         year = newYear;
     }
+
 
     public void setStartHour(int newStartTimeHour)
     {
@@ -242,11 +248,14 @@ public class Event
      */
     public ContentValues toValues()
     {
-        ContentValues values = new ContentValues(5);    // 5 = number of columns in Calendar Table
+        ContentValues values = new ContentValues(EventsTable.NUM_OF_COLUMNS);    // 8 = number of columns in Calendar Table
 
         values.put(EventsTable.COLUMN_ID, eventId);
         values.put(EventsTable.COLUMN_TITLE, eventTitle);
         values.put(EventsTable.COLUMN_DESC, desc);
+        values.put(EventsTable.COLUMN_DAY, dayOfMonth);
+        values.put(EventsTable.COLUMN_MONTH, month);
+        values.put(EventsTable.COLUMN_YEAR, year);
         values.put(EventsTable.COLUMN_START_TIME, getStartTime());
         values.put(EventsTable.COLUMN_END_TIME, getEndTime());
 

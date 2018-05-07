@@ -24,10 +24,11 @@ public class Calendar extends Fragment
     public static final String TAG = "CalendarDebug";
 
     List<Event> eventList = SampleDataProvider.eventList;
-    List<Event> listFromDB;
 
-    /* For DB communication */
-    EventDataSource mEventDataSource;
+    EventDataSource mEventDataSource;   /* For DB communication */
+    List<Event> mListFromDB;            /* List created from Database */
+    ListView mListView;                 /* References the ListView in the UI */
+    EventAdapter mEventAdapter;         /* Custom Adapter for the Event class */
 
     public Calendar()
     {
@@ -46,24 +47,23 @@ public class Calendar extends Fragment
         mEventDataSource.open();
         mEventDataSource.seedDatabase(eventList);
 
-        listFromDB = mEventDataSource.getAllItems();
-
-        /* Custom Adapter for Event class */
-        EventAdapter adapter;
-
-        /* References the ListView in the UI */
-        ListView listView;
-
         /* References the CalendarView in the UI */
         CalendarView calendarView;
 
         /* Holds date of the user's device (char[] req'd for setting text in TextView) */
         char[] deviceDate;
+        String[] separatedDate;
 
         /* TextView where date is displayed above listed Events */
         TextView tvDate;
 
-        deviceDate = getDate();
+        deviceDate = getDate(); // TODO: Use this to access Database
+        String date = String.valueOf(deviceDate);
+        separatedDate = String.valueOf(deviceDate).split("/");
+        mListFromDB = mEventDataSource.getAllItems(Integer.valueOf(separatedDate[0]),
+                                                   Integer.valueOf(separatedDate[1]),
+                                                   Integer.valueOf(separatedDate[2]));
+
         tvDate = view.findViewById(R.id.tv_date_sel);
         tvDate.setText(deviceDate, 0, deviceDate.length);
 
@@ -81,15 +81,15 @@ public class Calendar extends Fragment
                 TextView tv = outerView.findViewById(R.id.tv_date_sel);
                 tv.setText(charDate, 0, charDate.length);
 
-                // TODO: Use date change to grab events associated with the date selected
-                // TODO: Incorporate DB access
+                displayEventItems(month + 1, dayOfMonth, year);
             }
         });
 
         // TODO: Add click-to-edit events
-        adapter = new EventAdapter((this.getContext()), listFromDB);
-        listView = view.findViewById(R.id.list_events);
-        listView.setAdapter(adapter);
+        mListView = view.findViewById(R.id.list_events);
+        displayEventItems(Integer.valueOf(separatedDate[0]),
+                          Integer.valueOf(separatedDate[1]),
+                          Integer.valueOf(separatedDate[2]));
 
         return view;
     }
@@ -106,6 +106,20 @@ public class Calendar extends Fragment
     {
         super.onResume();
         mEventDataSource.open();
+    }
+
+    /**
+     * Displays the Events in accordance with the Date supplied
+     *
+     * @param displayM - Month
+     * @param displayD - Day
+     * @param displayY - Year
+     */
+    private void displayEventItems(int displayM, int displayD, int displayY)
+    {
+        mListFromDB = mEventDataSource.getAllItems(displayM, displayD, displayY);
+        mEventAdapter = new EventAdapter(this.getContext(), mListFromDB);
+        mListView.setAdapter(mEventAdapter);
     }
 
     /**
