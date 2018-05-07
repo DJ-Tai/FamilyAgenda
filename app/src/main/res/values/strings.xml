@@ -8,6 +8,16 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="today">Today</string>
+    <string name="add_chore">ADD CHORE</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_date">Enter Date</string>
+    <string name="reapeat_task">Reapeat Task</string>
+    <string name="name">Name</string>
+    <string name="chore_list">Chore List</string>
+    <string name="add_new_chore">Add New Chore</string>
+    <string name="chore_name">Chore Name</string>
+    <string name="add">Add</string>
     <string name="tv_date">TextView</string>
     <string name="button_done">Done</string>
     <string name="action_add_task">Add Item</string>
