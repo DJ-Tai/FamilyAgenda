@@ -7,7 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
+
 
 public class EventAdapter extends ArrayAdapter<Event>
 {
@@ -17,7 +18,7 @@ public class EventAdapter extends ArrayAdapter<Event>
      * @param context
      * @param events
      */
-    public EventAdapter(Context context, ArrayList<Event> events)
+    public EventAdapter(Context context, List<Event> events)
     {
         super(context, 0, events);
     }
@@ -27,6 +28,7 @@ public class EventAdapter extends ArrayAdapter<Event>
     {
         // Get the data item for this position
         Event event = getItem(position);
+        assert event != null;
 
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null)
@@ -36,21 +38,19 @@ public class EventAdapter extends ArrayAdapter<Event>
                             .inflate(R.layout.list_events, parent, false);
         }
 
-        // Lookup View for data population
-        TextView tvTitle = convertView.findViewById(R.id.event_title);
-        TextView tvDesc = convertView.findViewById(R.id.event_desc);
-        TextView tvStartHr = convertView.findViewById(R.id.event_start_hour);
-        TextView tvStartMin = convertView.findViewById(R.id.event_start_mins);
-        TextView tvEndHr = convertView.findViewById(R.id.event_end_hour);
-        TextView tvEndMin = convertView.findViewById(R.id.event_end_mins);
+        // Lookup TextView's for data population
+        TextView tvTitle = convertView.findViewById(R.id.tv_event_title);
+        TextView tvDesc = convertView.findViewById(R.id.tv_event_desc);
 
-        tvTitle.setText(event.getTitle());
+        TextView tvStartTime = convertView.findViewById(R.id.event_start_time);
+        TextView tvEndTime = convertView.findViewById(R.id.event_end_time);
+
+        tvTitle.setText(event.getEventTitle());
         tvDesc.setText(event.getDesc());
-        tvStartHr.setText(Integer.toString(event.getStartTimeHour()));
-        tvStartMin.setText(Integer.toString(event.getStartTimeMinute()));
-        tvEndHr.setText(Integer.toString(event.getEndTimeHour()));
-        tvEndMin.setText(Integer.toString(event.getEndTimeMinute()));
+        tvStartTime.setText(event.getStartTime());
+        tvEndTime.setText(event.getEndTime());
 
         return convertView;
     }
+
 }

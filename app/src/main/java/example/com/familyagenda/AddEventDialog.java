@@ -52,7 +52,7 @@ public class AddEventDialog extends DialogFragment {
             @Override
             public void onClick(View v){
                 ArrayList<Event> events = new ArrayList<>();
-                events.add(new Event("Birthday Party", "Description of Evan's Birthday Party",
+                events.add(new Event(null,"Birthday Party", "Description of Evan's Birthday Party",
                         20, 4, 2018, true,
                         10,00,18,00));
                 if(R.id.am_radio_button > 0) {
