@@ -6,7 +6,6 @@
 
     <string name="action_settings">Settings</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="today">Today</string>
     <string name="add_chore">ADD CHORE</string>
@@ -37,5 +36,6 @@
     <string name="nav_header_app_name">Family Agenda</string>
     <string name="nav_header_family_name">CECS 277 Group 5</string>
     <string name="nav_header_application_logo">Application Logo</string>
+    <string name="btn_add_todo">Add</string>
 
 </resources>

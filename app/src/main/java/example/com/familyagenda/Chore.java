@@ -27,11 +27,7 @@ public class Chore {
     }
 
     public void setComplete(int c) {
-        if (c == 1) {
-            complete = true;
-        }else {
-            complete = false;
-        }
+        complete = c == 1;
     }
 
 

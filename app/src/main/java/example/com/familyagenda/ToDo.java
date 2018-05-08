@@ -40,7 +40,7 @@ public class ToDo extends Fragment {
         // Inflate the layout for this fragment
         super.onCreate(savedInstanceState);
         db = new FamilyAgendaDbHelper(this.getContext());
-        tasks = (ListView)container.findViewById(R.id.lstTask);
+        tasks = container.findViewById(R.id.lstTask);
         return inflater.inflate(R.layout.fragment_to_do, container, false);
     }
 
@@ -86,7 +86,7 @@ public class ToDo extends Fragment {
     public void delete(View x)
     {
         View parent = (View)x.getParent();
-        TextView task = (TextView)parent.findViewById(R.id.eventtitle);
+        TextView task = parent.findViewById(R.id.eventtitle);
         Log.e("String",(String) task.getText());
         String event = String.valueOf(task.getText());
         db.delete(event);

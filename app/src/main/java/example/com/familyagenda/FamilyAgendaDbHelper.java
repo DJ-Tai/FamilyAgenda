@@ -8,6 +8,8 @@ import android.content.ContentValues;
 
 import java.util.ArrayList;
 
+import example.com.familyagenda.database.EventsTable;
+
 /**
  * Created by Helidia on 4/16/2018.
  */

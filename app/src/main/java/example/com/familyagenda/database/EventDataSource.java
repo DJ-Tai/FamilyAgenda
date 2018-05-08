@@ -118,7 +118,6 @@ public class EventDataSource
                                  null,
                                  EventsTable.COLUMN_START_TIME + " DESC");
 
-        // TODO: Verify why the COLUMN_START_TIME needs to be in DESCending order
         while (cursor.moveToNext())
         {
             Event event = new Event();

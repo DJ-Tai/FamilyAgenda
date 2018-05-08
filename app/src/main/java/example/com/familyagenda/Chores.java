@@ -3,6 +3,7 @@ package example.com.familyagenda;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +29,7 @@ public class Chores extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_chores, container, false);
 
@@ -106,8 +107,8 @@ public class Chores extends Fragment {
         This area will take care of adding in a new chore
          */
 
-        Button bAddChore = (Button) view.findViewById(R.id.bAddChore);
-        final EditText bChoreName = (EditText) view.findViewById(R.id.choreName);
+        Button bAddChore = view.findViewById(R.id.bAddChore);
+        final EditText bChoreName = view.findViewById(R.id.choreName);
 
         bAddChore.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onBackPressed()
     {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START))
         {
             drawer.closeDrawer(GravityCompat.START);
@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity
             fragmentManager.beginTransaction().replace(R.id.fragment, settings).commit();
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

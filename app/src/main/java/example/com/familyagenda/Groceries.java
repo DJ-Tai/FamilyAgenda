@@ -113,8 +113,8 @@ public class Groceries extends Fragment implements View.OnClickListener {
         super.onCreateView(inflater, container, savedInstanceState);
         view = inflater.inflate(R.layout.fragment_groceries, container, false);
         dbHelper = new FamilyAgendaDbHelper(getContext());
-        ListView lv = (ListView) view.findViewById(R.id.groceries_list);
-        ListView lv_suggestions = (ListView) view.findViewById(R.id.groceries_suggestions);
+        ListView lv = view.findViewById(R.id.groceries_list);
+        ListView lv_suggestions = view.findViewById(R.id.groceries_suggestions);
         groceries = fetchGroceriesList("FALSE");
         getSuggestions();
         arrayAdapter = new GroceriesItemList(view.getContext(), R.layout.groceries_items_list, groceries);
@@ -122,7 +122,7 @@ public class Groceries extends Fragment implements View.OnClickListener {
         lv.setAdapter(arrayAdapter);
         lv_suggestions.setAdapter(arrayAdapterSuggestions);
 
-        Button b = (Button) view.findViewById(R.id.btnAddItem);
+        Button b = view.findViewById(R.id.btnAddItem);
         b.setOnClickListener(this);
         // Inflate the layout for this fragment
         return view;
@@ -143,7 +143,7 @@ public class Groceries extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch(v.getId()) {
             case R.id.btnAddItem:
-                EditText etNewItem = (EditText) view.findViewById(R.id.etNewItem);
+                EditText etNewItem = view.findViewById(R.id.etNewItem);
                 addItem(etNewItem.getText().toString());
                 etNewItem.setText("");
                 break;
@@ -168,8 +168,8 @@ public class Groceries extends Fragment implements View.OnClickListener {
                 LayoutInflater inflater = LayoutInflater.from(getContext());
                 convertView = inflater.inflate(layout, parent, false);
                 ViewHolder viewHolder = new ViewHolder();
-                viewHolder.checkBox = (CheckBox) convertView.findViewById(R.id.list_item_checkBox);
-                viewHolder.title = (TextView) convertView.findViewById(R.id.list_item_text);
+                viewHolder.checkBox = convertView.findViewById(R.id.list_item_checkBox);
+                viewHolder.title = convertView.findViewById(R.id.list_item_text);
                 //viewHolder.button = (Button) convertView.findViewById(R.id.list_item_remove);
                 convertView.setTag(viewHolder);
             }
@@ -214,7 +214,7 @@ public class Groceries extends Fragment implements View.OnClickListener {
                 LayoutInflater inflater = LayoutInflater.from(getContext());
                 convertView = inflater.inflate(layout, parent, false);
                 ViewHolder viewHolder = new ViewHolder();
-                viewHolder.button = (Button) convertView.findViewById(R.id.list_suggested_item);
+                viewHolder.button = convertView.findViewById(R.id.list_suggested_item);
                 convertView.setTag(viewHolder);
             }
             mainViewholder = (ViewHolder) convertView.getTag();
