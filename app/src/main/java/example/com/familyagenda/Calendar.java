@@ -4,6 +4,7 @@ package example.com.familyagenda;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +34,8 @@ public class Calendar extends Fragment
     List<Event> mListFromDB;            /* List created from Database */
     ListView mListView;                 /* References the ListView in the UI */
     EventAdapter mEventAdapter;         /* Custom Adapter for the Event class */
+    Button mAddEvent;
+
 
     public Calendar()
     {
@@ -89,6 +92,16 @@ public class Calendar extends Fragment
             }
         });
 
+        // TODO: EVAN I GOT IT TO CONNECT
+        mAddEvent = view.findViewById(R.id.add_event_button);
+        mAddEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
 //        //create the spinner for start time hour
 //        final Spinner hour = (Spinner)view.findViewById(R.id.start_time_spinner_hour);

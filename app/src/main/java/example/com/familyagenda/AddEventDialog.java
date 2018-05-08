@@ -25,11 +25,17 @@ public class AddEventDialog extends DialogFragment {
     Spinner min;
     ArrayAdapter<CharSequence> adapter2;
 
+    public AddEventDialog()
+    {
+
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
         View rootView = inflater.inflate(R.layout.add_event_custom_dialog_box,
                 container, false);
         //hour = (Spinner)findByViewId(R.id.end_time_spinner_hour);
