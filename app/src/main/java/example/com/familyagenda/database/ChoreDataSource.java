@@ -2,8 +2,12 @@ package example.com.familyagenda.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
 
 import example.com.familyagenda.Chore;
 import example.com.familyagenda.FamilyAgendaDbHelper;
@@ -39,4 +43,28 @@ public class ChoreDataSource
         return chore;
     }
 
+    public long getDataItemsCount()
+    {
+        return DatabaseUtils.queryNumEntries(mDatabase, ChoresTable.TABLE_NAME);
+    }
+
+    public void seedDatabase(ArrayList<Chore> choreList)
+    {
+        long numItems = getDataItemsCount();
+        if (numItems == 0)
+        {
+            for (Chore chore : choreList)
+            {
+                try
+                {
+                    createChore(chore);
+                } catch(SQLiteException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    // TODO: getAllItems()
 }

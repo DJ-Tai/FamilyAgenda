@@ -16,21 +16,30 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
+import example.com.familyagenda.database.ChoreDataSource;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Chores extends Fragment {
+public class Chores extends Fragment
+{
+    ArrayList<Chore> mListFromDB;
+    ChoreDataSource mChoreDataSource;
 
-    public Chores() {
+    public Chores()
+    {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState)
+    {
         View view = inflater.inflate(R.layout.fragment_chores, container, false);
+
+        mChoreDataSource = new ChoreDataSource(this.getContext());
+        mChoreDataSource.open();
 
         /*
         This area takes care of the displaying of the choresList
@@ -38,14 +47,12 @@ public class Chores extends Fragment {
         final ArrayList<Chore> choresList = new ArrayList<>();
         final ArrayList<Button> buttonList = new ArrayList<>();
 
-//        choresList.add(new Chore("Laundry"));
-
         //Creating an ArrayList to easily access every text object in the choresList tab
         final ArrayList<TextView> textViews = new ArrayList<>();
         TextView tempT1, tempT2, tempT3, tempT4, tempT5, tempT6, tempT7, tempT8, tempT9, tempT10;
         Button button1, button2, button3, button4, button5, button6, button7, button8, button9, button10;
 
-        button1= view.findViewById((R.id.button1));
+        button1 = view.findViewById((R.id.button1));
         button2 = view.findViewById((R.id.button2));
         button3 = view.findViewById((R.id.button3));
         button4 = view.findViewById((R.id.button4));
@@ -90,12 +97,14 @@ public class Chores extends Fragment {
         textViews.add(tempT10);
 
         //making all of the buttons invisible unless there is a chore there
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++)
+        {
             Button tempButton = buttonList.get(i);
             tempButton.setVisibility(View.INVISIBLE);
         }
 
-        for (int i = 0; i < choresList.size(); i++) {
+        for (int i = 0; i < choresList.size(); i++)
+        {
             TextView temp = textViews.get(i);
             temp.setTextSize(25);
             temp.setText(choresList.get(i).getName());
@@ -109,38 +118,47 @@ public class Chores extends Fragment {
         Button bAddChore = (Button) view.findViewById(R.id.bAddChore);
         final EditText bChoreName = (EditText) view.findViewById(R.id.choreName);
 
-        bAddChore.setOnClickListener(new View.OnClickListener() {
+        bAddChore.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
-            String choreName = bChoreName.getText().toString();
-            if (choreName.length() != 0) {
-                bChoreName.setText("");
-                choresList.add(new Chore(choreName));
+            public void onClick(View view)
+            {
+                String choreName = bChoreName.getText().toString();
+                if (choreName.length() != 0)
+                {
+                    bChoreName.setText("");
+                    choresList.add(new Chore(choreName));
 
-                for (int i = 0; i < choresList.size(); i++) {
-                    TextView temp = textViews.get(i);
-                    temp.setTextSize(25);
-                    temp.setText(choresList.get(i).getName());
-                    Button tempButton = buttonList.get(i);
-                    tempButton.setVisibility(View.VISIBLE);
+                    for (int i = 0; i < choresList.size(); i++)
+                    {
+                        TextView temp = textViews.get(i);
+                        temp.setTextSize(25);
+                        temp.setText(choresList.get(i).getName());
+                        Button tempButton = buttonList.get(i);
+                        tempButton.setVisibility(View.VISIBLE);
+                    }
                 }
-            }
             }
         });
 
 
         //deleting an event
-        button1.setOnClickListener(new View.OnClickListener() {
+        button1.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 choresList.remove(0);
-                for (int k = 0; k < buttonList.size(); k++) {
+                for (int k = 0; k < buttonList.size(); k++)
+                {
                     buttonList.get(k).setVisibility(View.INVISIBLE);
                 }
-                for (int j = 0; j < textViews.size(); j++) {
+                for (int j = 0; j < textViews.size(); j++)
+                {
                     textViews.get(j).setText("");
                 }
-                for (int i = 0; i < choresList.size(); i++) {
+                for (int i = 0; i < choresList.size(); i++)
+                {
                     TextView temp = textViews.get(i);
                     temp.setTextSize(25);
                     temp.setText(choresList.get(i).getName());
@@ -149,17 +167,22 @@ public class Chores extends Fragment {
                 }
             }
         });
-        button2.setOnClickListener(new View.OnClickListener() {
+        button2.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 choresList.remove(1);
-                for (int k = 0; k < buttonList.size(); k++) {
+                for (int k = 0; k < buttonList.size(); k++)
+                {
                     buttonList.get(k).setVisibility(View.INVISIBLE);
                 }
-                for (int j = 0; j < textViews.size(); j++) {
+                for (int j = 0; j < textViews.size(); j++)
+                {
                     textViews.get(j).setText("");
                 }
-                for (int i = 0; i < choresList.size(); i++) {
+                for (int i = 0; i < choresList.size(); i++)
+                {
                     TextView temp = textViews.get(i);
                     temp.setTextSize(25);
                     temp.setText(choresList.get(i).getName());
@@ -168,17 +191,22 @@ public class Chores extends Fragment {
                 }
             }
         });
-        button3.setOnClickListener(new View.OnClickListener() {
+        button3.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 choresList.remove(2);
-                for (int k = 0; k < buttonList.size(); k++) {
+                for (int k = 0; k < buttonList.size(); k++)
+                {
                     buttonList.get(k).setVisibility(View.INVISIBLE);
                 }
-                for (int j = 0; j < textViews.size(); j++) {
+                for (int j = 0; j < textViews.size(); j++)
+                {
                     textViews.get(j).setText("");
                 }
-                for (int i = 0; i < choresList.size(); i++) {
+                for (int i = 0; i < choresList.size(); i++)
+                {
                     TextView temp = textViews.get(i);
                     temp.setTextSize(25);
                     temp.setText(choresList.get(i).getName());
@@ -187,17 +215,22 @@ public class Chores extends Fragment {
                 }
             }
         });
-        button4.setOnClickListener(new View.OnClickListener() {
+        button4.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 choresList.remove(3);
-                for (int k = 0; k < buttonList.size(); k++) {
+                for (int k = 0; k < buttonList.size(); k++)
+                {
                     buttonList.get(k).setVisibility(View.INVISIBLE);
                 }
-                for (int j = 0; j < textViews.size(); j++) {
+                for (int j = 0; j < textViews.size(); j++)
+                {
                     textViews.get(j).setText("");
                 }
-                for (int i = 0; i < choresList.size(); i++) {
+                for (int i = 0; i < choresList.size(); i++)
+                {
                     TextView temp = textViews.get(i);
                     temp.setTextSize(25);
                     temp.setText(choresList.get(i).getName());
@@ -206,17 +239,22 @@ public class Chores extends Fragment {
                 }
             }
         });
-        button5.setOnClickListener(new View.OnClickListener() {
+        button5.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 choresList.remove(4);
-                for (int k = 0; k < buttonList.size(); k++) {
+                for (int k = 0; k < buttonList.size(); k++)
+                {
                     buttonList.get(k).setVisibility(View.INVISIBLE);
                 }
-                for (int j = 0; j < textViews.size(); j++) {
+                for (int j = 0; j < textViews.size(); j++)
+                {
                     textViews.get(j).setText("");
                 }
-                for (int i = 0; i < choresList.size(); i++) {
+                for (int i = 0; i < choresList.size(); i++)
+                {
                     TextView temp = textViews.get(i);
                     temp.setTextSize(25);
                     temp.setText(choresList.get(i).getName());
@@ -225,17 +263,22 @@ public class Chores extends Fragment {
                 }
             }
         });
-        button6.setOnClickListener(new View.OnClickListener() {
+        button6.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 choresList.remove(5);
-                for (int k = 0; k < buttonList.size(); k++) {
+                for (int k = 0; k < buttonList.size(); k++)
+                {
                     buttonList.get(k).setVisibility(View.INVISIBLE);
                 }
-                for (int j = 0; j < textViews.size(); j++) {
+                for (int j = 0; j < textViews.size(); j++)
+                {
                     textViews.get(j).setText("");
                 }
-                for (int i = 0; i < choresList.size(); i++) {
+                for (int i = 0; i < choresList.size(); i++)
+                {
                     TextView temp = textViews.get(i);
                     temp.setTextSize(25);
                     temp.setText(choresList.get(i).getName());
@@ -244,17 +287,22 @@ public class Chores extends Fragment {
                 }
             }
         });
-        button7.setOnClickListener(new View.OnClickListener() {
+        button7.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 choresList.remove(6);
-                for (int k = 0; k < buttonList.size(); k++) {
+                for (int k = 0; k < buttonList.size(); k++)
+                {
                     buttonList.get(k).setVisibility(View.INVISIBLE);
                 }
-                for (int j = 0; j < textViews.size(); j++) {
+                for (int j = 0; j < textViews.size(); j++)
+                {
                     textViews.get(j).setText("");
                 }
-                for (int i = 0; i < choresList.size(); i++) {
+                for (int i = 0; i < choresList.size(); i++)
+                {
                     TextView temp = textViews.get(i);
                     temp.setTextSize(25);
                     temp.setText(choresList.get(i).getName());
@@ -263,17 +311,22 @@ public class Chores extends Fragment {
                 }
             }
         });
-        button8.setOnClickListener(new View.OnClickListener() {
+        button8.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 choresList.remove(7);
-                for (int k = 0; k < buttonList.size(); k++) {
+                for (int k = 0; k < buttonList.size(); k++)
+                {
                     buttonList.get(k).setVisibility(View.INVISIBLE);
                 }
-                for (int j = 0; j < textViews.size(); j++) {
+                for (int j = 0; j < textViews.size(); j++)
+                {
                     textViews.get(j).setText("");
                 }
-                for (int i = 0; i < choresList.size(); i++) {
+                for (int i = 0; i < choresList.size(); i++)
+                {
                     TextView temp = textViews.get(i);
                     temp.setTextSize(25);
                     temp.setText(choresList.get(i).getName());
@@ -282,17 +335,22 @@ public class Chores extends Fragment {
                 }
             }
         });
-        button9.setOnClickListener(new View.OnClickListener() {
+        button9.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 choresList.remove(8);
-                for (int k = 0; k < buttonList.size(); k++) {
+                for (int k = 0; k < buttonList.size(); k++)
+                {
                     buttonList.get(k).setVisibility(View.INVISIBLE);
                 }
-                for (int j = 0; j < textViews.size(); j++) {
+                for (int j = 0; j < textViews.size(); j++)
+                {
                     textViews.get(j).setText("");
                 }
-                for (int i = 0; i < choresList.size(); i++) {
+                for (int i = 0; i < choresList.size(); i++)
+                {
                     TextView temp = textViews.get(i);
                     temp.setTextSize(25);
                     temp.setText(choresList.get(i).getName());
@@ -301,17 +359,22 @@ public class Chores extends Fragment {
                 }
             }
         });
-        button10.setOnClickListener(new View.OnClickListener() {
+        button10.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 choresList.remove(9);
-                for (int k = 0; k < buttonList.size(); k++) {
+                for (int k = 0; k < buttonList.size(); k++)
+                {
                     buttonList.get(k).setVisibility(View.INVISIBLE);
                 }
-                for (int j = 0; j < textViews.size(); j++) {
+                for (int j = 0; j < textViews.size(); j++)
+                {
                     textViews.get(j).setText("");
                 }
-                for (int i = 0; i < choresList.size(); i++) {
+                for (int i = 0; i < choresList.size(); i++)
+                {
                     TextView temp = textViews.get(i);
                     temp.setTextSize(25);
                     temp.setText(choresList.get(i).getName());
