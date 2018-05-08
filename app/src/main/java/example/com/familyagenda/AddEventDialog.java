@@ -46,6 +46,7 @@ public class AddEventDialog extends DialogFragment {
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
+
         });
         Button btnOK = rootView.findViewById(R.id.btnOK);
         btnOK.setOnClickListener(new View.OnClickListener(){

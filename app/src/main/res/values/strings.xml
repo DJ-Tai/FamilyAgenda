@@ -37,32 +37,5 @@
     <string name="nav_header_app_name">Family Agenda</string>
     <string name="nav_header_family_name">CECS 277 Group 5</string>
     <string name="nav_header_application_logo">Application Logo</string>
-    <string-array name="hour_times">
-        <item>12</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-    </string-array>
-    <string-array name="min_times">
-        <item>00</item>
-        <item>05</item>
-        <item>10</item>
-        <item>15</item>
-        <item>20</item>
-        <item>25</item>
-        <item>30</item>
-        <item>35</item>
-        <item>40</item>
-        <item>45</item>
-        <item>50</item>
-        <item>55</item>
-    </string-array>
+
 </resources>
