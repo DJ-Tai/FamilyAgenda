@@ -33,14 +33,14 @@ public class Chores extends Fragment {
         View view = inflater.inflate(R.layout.fragment_chores, container, false);
 
         /*
-        This area takes care of the displaying of the chores
+        This area takes care of the displaying of the choresList
          */
-        final ArrayList<Chore> chores = new ArrayList<>();
+        final ArrayList<Chore> choresList = new ArrayList<>();
         final ArrayList<Button> buttonList = new ArrayList<>();
 
-//        chores.add(new Chore("Laundry"));
+//        choresList.add(new Chore("Laundry"));
 
-        //Creating an ArrayList to easily access every text object in the chores tab
+        //Creating an ArrayList to easily access every text object in the choresList tab
         final ArrayList<TextView> textViews = new ArrayList<>();
         TextView tempT1, tempT2, tempT3, tempT4, tempT5, tempT6, tempT7, tempT8, tempT9, tempT10;
         Button button1, button2, button3, button4, button5, button6, button7, button8, button9, button10;
@@ -95,10 +95,10 @@ public class Chores extends Fragment {
             tempButton.setVisibility(View.INVISIBLE);
         }
 
-        for (int i = 0; i < chores.size(); i++) {
+        for (int i = 0; i < choresList.size(); i++) {
             TextView temp = textViews.get(i);
             temp.setTextSize(25);
-            temp.setText(chores.get(i).getName());
+            temp.setText(choresList.get(i).getName());
         }
 
 
@@ -115,12 +115,12 @@ public class Chores extends Fragment {
             String choreName = bChoreName.getText().toString();
             if (choreName.length() != 0) {
                 bChoreName.setText("");
-                chores.add(new Chore(choreName));
+                choresList.add(new Chore(choreName));
 
-                for (int i = 0; i < chores.size(); i++) {
+                for (int i = 0; i < choresList.size(); i++) {
                     TextView temp = textViews.get(i);
                     temp.setTextSize(25);
-                    temp.setText(chores.get(i).getName());
+                    temp.setText(choresList.get(i).getName());
                     Button tempButton = buttonList.get(i);
                     tempButton.setVisibility(View.VISIBLE);
                 }
@@ -133,17 +133,17 @@ public class Chores extends Fragment {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chores.remove(0);
+                choresList.remove(0);
                 for (int k = 0; k < buttonList.size(); k++) {
                     buttonList.get(k).setVisibility(View.INVISIBLE);
                 }
                 for (int j = 0; j < textViews.size(); j++) {
                     textViews.get(j).setText("");
                 }
-                for (int i = 0; i < chores.size(); i++) {
+                for (int i = 0; i < choresList.size(); i++) {
                     TextView temp = textViews.get(i);
                     temp.setTextSize(25);
-                    temp.setText(chores.get(i).getName());
+                    temp.setText(choresList.get(i).getName());
                     Button tempButton = buttonList.get(i);
                     tempButton.setVisibility(View.VISIBLE);
                 }
@@ -152,17 +152,17 @@ public class Chores extends Fragment {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chores.remove(1);
+                choresList.remove(1);
                 for (int k = 0; k < buttonList.size(); k++) {
                     buttonList.get(k).setVisibility(View.INVISIBLE);
                 }
                 for (int j = 0; j < textViews.size(); j++) {
                     textViews.get(j).setText("");
                 }
-                for (int i = 0; i < chores.size(); i++) {
+                for (int i = 0; i < choresList.size(); i++) {
                     TextView temp = textViews.get(i);
                     temp.setTextSize(25);
-                    temp.setText(chores.get(i).getName());
+                    temp.setText(choresList.get(i).getName());
                     Button tempButton = buttonList.get(i);
                     tempButton.setVisibility(View.VISIBLE);
                 }
@@ -171,17 +171,17 @@ public class Chores extends Fragment {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chores.remove(2);
+                choresList.remove(2);
                 for (int k = 0; k < buttonList.size(); k++) {
                     buttonList.get(k).setVisibility(View.INVISIBLE);
                 }
                 for (int j = 0; j < textViews.size(); j++) {
                     textViews.get(j).setText("");
                 }
-                for (int i = 0; i < chores.size(); i++) {
+                for (int i = 0; i < choresList.size(); i++) {
                     TextView temp = textViews.get(i);
                     temp.setTextSize(25);
-                    temp.setText(chores.get(i).getName());
+                    temp.setText(choresList.get(i).getName());
                     Button tempButton = buttonList.get(i);
                     tempButton.setVisibility(View.VISIBLE);
                 }
@@ -190,17 +190,17 @@ public class Chores extends Fragment {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chores.remove(3);
+                choresList.remove(3);
                 for (int k = 0; k < buttonList.size(); k++) {
                     buttonList.get(k).setVisibility(View.INVISIBLE);
                 }
                 for (int j = 0; j < textViews.size(); j++) {
                     textViews.get(j).setText("");
                 }
-                for (int i = 0; i < chores.size(); i++) {
+                for (int i = 0; i < choresList.size(); i++) {
                     TextView temp = textViews.get(i);
                     temp.setTextSize(25);
-                    temp.setText(chores.get(i).getName());
+                    temp.setText(choresList.get(i).getName());
                     Button tempButton = buttonList.get(i);
                     tempButton.setVisibility(View.VISIBLE);
                 }
@@ -209,17 +209,17 @@ public class Chores extends Fragment {
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chores.remove(4);
+                choresList.remove(4);
                 for (int k = 0; k < buttonList.size(); k++) {
                     buttonList.get(k).setVisibility(View.INVISIBLE);
                 }
                 for (int j = 0; j < textViews.size(); j++) {
                     textViews.get(j).setText("");
                 }
-                for (int i = 0; i < chores.size(); i++) {
+                for (int i = 0; i < choresList.size(); i++) {
                     TextView temp = textViews.get(i);
                     temp.setTextSize(25);
-                    temp.setText(chores.get(i).getName());
+                    temp.setText(choresList.get(i).getName());
                     Button tempButton = buttonList.get(i);
                     tempButton.setVisibility(View.VISIBLE);
                 }
@@ -228,17 +228,17 @@ public class Chores extends Fragment {
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chores.remove(5);
+                choresList.remove(5);
                 for (int k = 0; k < buttonList.size(); k++) {
                     buttonList.get(k).setVisibility(View.INVISIBLE);
                 }
                 for (int j = 0; j < textViews.size(); j++) {
                     textViews.get(j).setText("");
                 }
-                for (int i = 0; i < chores.size(); i++) {
+                for (int i = 0; i < choresList.size(); i++) {
                     TextView temp = textViews.get(i);
                     temp.setTextSize(25);
-                    temp.setText(chores.get(i).getName());
+                    temp.setText(choresList.get(i).getName());
                     Button tempButton = buttonList.get(i);
                     tempButton.setVisibility(View.VISIBLE);
                 }
@@ -247,17 +247,17 @@ public class Chores extends Fragment {
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chores.remove(6);
+                choresList.remove(6);
                 for (int k = 0; k < buttonList.size(); k++) {
                     buttonList.get(k).setVisibility(View.INVISIBLE);
                 }
                 for (int j = 0; j < textViews.size(); j++) {
                     textViews.get(j).setText("");
                 }
-                for (int i = 0; i < chores.size(); i++) {
+                for (int i = 0; i < choresList.size(); i++) {
                     TextView temp = textViews.get(i);
                     temp.setTextSize(25);
-                    temp.setText(chores.get(i).getName());
+                    temp.setText(choresList.get(i).getName());
                     Button tempButton = buttonList.get(i);
                     tempButton.setVisibility(View.VISIBLE);
                 }
@@ -266,17 +266,17 @@ public class Chores extends Fragment {
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chores.remove(7);
+                choresList.remove(7);
                 for (int k = 0; k < buttonList.size(); k++) {
                     buttonList.get(k).setVisibility(View.INVISIBLE);
                 }
                 for (int j = 0; j < textViews.size(); j++) {
                     textViews.get(j).setText("");
                 }
-                for (int i = 0; i < chores.size(); i++) {
+                for (int i = 0; i < choresList.size(); i++) {
                     TextView temp = textViews.get(i);
                     temp.setTextSize(25);
-                    temp.setText(chores.get(i).getName());
+                    temp.setText(choresList.get(i).getName());
                     Button tempButton = buttonList.get(i);
                     tempButton.setVisibility(View.VISIBLE);
                 }
@@ -285,17 +285,17 @@ public class Chores extends Fragment {
         button9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chores.remove(8);
+                choresList.remove(8);
                 for (int k = 0; k < buttonList.size(); k++) {
                     buttonList.get(k).setVisibility(View.INVISIBLE);
                 }
                 for (int j = 0; j < textViews.size(); j++) {
                     textViews.get(j).setText("");
                 }
-                for (int i = 0; i < chores.size(); i++) {
+                for (int i = 0; i < choresList.size(); i++) {
                     TextView temp = textViews.get(i);
                     temp.setTextSize(25);
-                    temp.setText(chores.get(i).getName());
+                    temp.setText(choresList.get(i).getName());
                     Button tempButton = buttonList.get(i);
                     tempButton.setVisibility(View.VISIBLE);
                 }
@@ -304,17 +304,17 @@ public class Chores extends Fragment {
         button10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chores.remove(9);
+                choresList.remove(9);
                 for (int k = 0; k < buttonList.size(); k++) {
                     buttonList.get(k).setVisibility(View.INVISIBLE);
                 }
                 for (int j = 0; j < textViews.size(); j++) {
                     textViews.get(j).setText("");
                 }
-                for (int i = 0; i < chores.size(); i++) {
+                for (int i = 0; i < choresList.size(); i++) {
                     TextView temp = textViews.get(i);
                     temp.setTextSize(25);
-                    temp.setText(chores.get(i).getName());
+                    temp.setText(choresList.get(i).getName());
                     Button tempButton = buttonList.get(i);
                     tempButton.setVisibility(View.VISIBLE);
                 }
