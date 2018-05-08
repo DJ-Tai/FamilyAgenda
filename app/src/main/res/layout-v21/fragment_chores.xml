@@ -5,7 +5,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
-        android:layout_width="782dp"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent">
@@ -13,7 +13,7 @@
         <TextView
             android:id="@+id/todayText"
             android:layout_width="match_parent"
-            android:layout_height="79dp"
+            android:layout_height="wrap_content"
             android:text="@string/chore_list"
             android:textAlignment="center"
             android:textSize="50sp"
@@ -25,7 +25,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="472dp"
+                android:layout_width="450dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
@@ -82,7 +82,7 @@
             </LinearLayout>
 
             <android.support.constraint.ConstraintLayout
-                android:layout_width="61dp"
+                android:layout_width="60dp"
                 android:layout_height="match_parent">
 
                 <Button
