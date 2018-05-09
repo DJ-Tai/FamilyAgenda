@@ -149,20 +149,6 @@ public class Calendar extends Fragment
         return view;
     }
 
-    @Override
-    public void onPause()
-    {
-        super.onPause();
-        mEventDataSource.close();
-    }
-
-    @Override
-    public void onResume()
-    {
-        super.onResume();
-        mEventDataSource.open();
-    }
-
     /**
      * Displays the Events in accordance with the Date supplied
      *
