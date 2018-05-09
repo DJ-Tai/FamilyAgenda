@@ -29,6 +29,7 @@ public class FamilyAgendaDbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db)
     {
         db.execSQL(FamilyAgendaContract.SQL_CREATE_GROCERIES);
+        db.execSQL(EventsTable.SQL_CREATE_EVENTS);
         String query = String.format("CREATE TABLE %s (ID INTEGER PRIMARY KEY AUTOINCREMENT,%s TEXT NOT NULL",DB_Table,DB_COLUM);
     }
 
