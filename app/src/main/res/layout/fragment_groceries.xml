@@ -6,36 +6,49 @@
     tools:context="example.com.familyagenda.Groceries"
     android:baselineAligned="false">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight=".50">
-        <ListView
-            android:id="@+id/groceries_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <EditText
+        android:layout_weight=".50"
+        android:orientation="vertical">
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
+            android:textColor="#000000"
+            android:textSize="32sp"
+            android:text="Groceries List"/>
+        <ListView
+            android:id="@+id/groceries_list"
+            android:layout_height="0dip"
+            android:layout_width="match_parent"
+            android:layout_weight="1"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/etNewItem"
             android:hint="@string/enter_a_new_item" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
             android:text="@string/add_item"
             android:id="@+id/btnAddItem" />
-    </FrameLayout>
-    <FrameLayout
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight=".50">
+        android:layout_weight=".50"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="32sp"
+            android:text="Suggested Items"/>
         <ListView
             android:id="@+id/groceries_suggestions"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-    </FrameLayout>
+    </LinearLayout>
 </LinearLayout>

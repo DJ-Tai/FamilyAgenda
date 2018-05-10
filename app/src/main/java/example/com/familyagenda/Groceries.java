@@ -144,6 +144,8 @@ public class Groceries extends Fragment implements View.OnClickListener {
         switch(v.getId()) {
             case R.id.btnAddItem:
                 EditText etNewItem = view.findViewById(R.id.etNewItem);
+                if (etNewItem.getText().toString().isEmpty())
+                    break;
                 addItem(etNewItem.getText().toString());
                 etNewItem.setText("");
                 break;
