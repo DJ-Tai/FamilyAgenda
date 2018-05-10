@@ -17,7 +17,11 @@ import android.widget.Spinner;
  * Created by Evan on 4/26/18.
  */
 
+/**
+ * Creates and Dialog Fragment for adding a new Event
+ * */
 public class AddEventDialog extends AppCompatDialogFragment {
+    //initializes the input options from user on the fragment
     private EditText eventName;
     private Button pickDate1;
     private Button pickDate2;
@@ -41,16 +45,18 @@ public class AddEventDialog extends AppCompatDialogFragment {
         View view = inflater.inflate(R.layout.add_event_custom_dialog_box, null);
 
         builder.setView(view)
-                .setTitle("Add Event")
-                .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        //does nothing when the "Cancel" button is selected
                     }
                 })
-                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Add Event", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        //TODO: pull the user input and set to variables
+                        String name_of_event = eventName.getText().toString();
+                        String description_of_event = description.getText().toString();
 
                     }
                 });
@@ -73,5 +79,7 @@ public class AddEventDialog extends AppCompatDialogFragment {
         return builder.create();
 
     }
+
+
 
 }

@@ -90,12 +90,17 @@ public class Calendar extends Fragment
         });
 
 
-        // TODO: EVAN I GOT IT TO CONNECT
+        // onClick Activity for "Add Event" button in Calendar
         mAddEvent = view.findViewById(R.id.add_event_button);
         mAddEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
+                //TODO: find a way to add the AddEventDialog Dialog when the "Add Event" button clicked
+
+                //Created and instance of a new CalendarActivity which handles
+                //also inflates the calendar fragment and creates the dialog box
+                //when the "Add Event" button is pressed
                 CalendarActivity newCalActivity = new CalendarActivity();
                 Snackbar.make(v, "Opening Add Event", Snackbar.LENGTH_SHORT)
                         .setAction("Action", null).show();
@@ -216,6 +221,7 @@ public class Calendar extends Fragment
 
         return new String(num);
     }
+
 
 
     }
