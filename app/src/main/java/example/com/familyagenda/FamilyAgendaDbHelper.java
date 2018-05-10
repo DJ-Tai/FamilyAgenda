@@ -56,7 +56,7 @@ public class FamilyAgendaDbHelper extends SQLiteOpenHelper {
     public void delete(String task)
     {
         SQLiteDatabase x = this.getWritableDatabase();
-        x.delete(DB_Table,DB_COLUM+" - ?",new String[]{task});
+        x.delete(DB_Table,DB_COLUM+" = ?",new String[]{task});
         x.close();
     }
     public ArrayList<String> gettodolist()

@@ -1,24 +1,88 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="example.com.familyagenda.ToDo">
 
     <!-- TODO: Update blank fragment layout -->
-    <ListView
-        android:id="@+id/lstTask"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
 
-    <Button
-        android:id="@+id/Add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:text="@string/btn_add_todo"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/Title"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="To Do"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX=" />0dp" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:text=""
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="42dp" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:text=""
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="156dp" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:text=""
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="213dp" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:text=""
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="270dp" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:text=""
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="327dp" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:text=""
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="384dp" />
+
+            <Button
+                android:id="@+id/button11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Delete" />
+
+            <Button
+                android:id="@+id/button12"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:text="Add" />
+
+        </LinearLayout>
 </RelativeLayout>
 
 
