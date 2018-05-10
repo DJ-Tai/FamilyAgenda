@@ -1,73 +1,77 @@
 package example.com.familyagenda;
 
-import android.app.DialogFragment;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.os.Bundle;
-import android.view.ViewGroup;
-import android.support.annotation.Nullable;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 /**
  * Created by Evan on 4/26/18.
  */
 
-public class AddEventDialog extends DialogFragment {
+public class AddEventDialog extends AppCompatDialogFragment {
+    private EditText eventName;
+    private Button pickDate1;
+    private Button pickDate2;
+    private EditText description;
+    private Spinner startTimeHour;
+    private Spinner startTimeMin;
+    private Spinner endTimeHour;
+    private Spinner endTimeMin;
+    private RadioButton startTimeAM;
+    private RadioButton getStartTimePM;
+    private RadioButton endTimeAM;
+    private RadioButton endTimePM;
+    private Button cancelDialogBox;
+    private Button okDialogBox;
 
-    Spinner hour;
-    ArrayAdapter<CharSequence> adapter;
-    Spinner min;
-    ArrayAdapter<CharSequence> adapter2;
-
-    public AddEventDialog()
-    {
-
-    }
-
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        View rootView = inflater.inflate(R.layout.add_event_custom_dialog_box,
-                container, false);
-        //hour = (Spinner)findByViewId(R.id.end_time_spinner_hour);
-        //adapter = ArrayAdapter.createFromResource(this,R.array.hour_times, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        hour.setAdapter(adapter);
-        hour.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                //TODO - set the event hour here. Then do this step for the other spinners
-            }
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View view = inflater.inflate(R.layout.add_event_custom_dialog_box, null);
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+        builder.setView(view)
+                .setTitle("Add Event")
+                .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
-            }
+                    }
+                })
+                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
-        });
-        Button btnOK = rootView.findViewById(R.id.btnOK);
-        btnOK.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                ArrayList<Event> events = new ArrayList<>();
-                events.add(new Event(null,"Birthday Party", "Description of Evan's Birthday Party",
-                        20, 4, 2018, true,
-                        10,00,18,00));
-                if(R.id.am_radio_button > 0) {
-                    //events.add(new Event(R.id.event_name, R.id.event_description, R.id.));
+                    }
+                });
 
-                }
-            }
-        });
-        return rootView;
+        eventName = view.findViewById(R.id.eventName);
+        pickDate1 = view.findViewById(R.id.start_date_button);
+        pickDate2 = view.findViewById(R.id.end_date_button);
+        description = view.findViewById(R.id.editText2);
+        startTimeHour = view.findViewById(R.id.start_time_spinner_hour);
+        startTimeMin = view.findViewById(R.id.start_time_spinner_minute);
+        endTimeHour = view.findViewById(R.id.end_time_spinner_hour);
+        endTimeMin = view.findViewById(R.id.end_time_spinner_minute);
+        startTimeAM = view.findViewById(R.id.am_radio_button);
+        getStartTimePM = view.findViewById(R.id.pm_radio_button);
+        endTimeAM = view.findViewById(R.id.am_radio_button2);
+        endTimePM = view.findViewById(R.id.pm_radio_button2);
+        cancelDialogBox = view.findViewById(R.id.btnCancel);
+        okDialogBox = view.findViewById(R.id.btnOK);
+
+        return builder.create();
+
     }
+
 }

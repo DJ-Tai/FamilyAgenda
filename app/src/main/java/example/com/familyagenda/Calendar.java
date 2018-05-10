@@ -1,7 +1,6 @@
 package example.com.familyagenda;
 
 
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -13,8 +12,6 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Spinner;
-import android.widget.ArrayAdapter;
 
 import java.util.List;
 
@@ -44,7 +41,7 @@ public class Calendar extends Fragment
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
+                             final Bundle savedInstanceState)
     {
         /* View to be returned and referenced, i.e., DON'T DELETE ME */
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
@@ -92,52 +89,19 @@ public class Calendar extends Fragment
             }
         });
 
+
         // TODO: EVAN I GOT IT TO CONNECT
         mAddEvent = view.findViewById(R.id.add_event_button);
         mAddEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-                Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
+                CalendarActivity newCalActivity = new CalendarActivity();
+                Snackbar.make(v, "Opening Add Event", Snackbar.LENGTH_SHORT)
                         .setAction("Action", null).show();
             }
+
         });
-
-//        //create the spinner for start time hour
-//        final Spinner hour = (Spinner)view.findViewById(R.id.start_time_spinner_hour);
-//        // Create an ArrayAdapter using the string array and a default spinner layout
-//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
-//                R.array.hour_times, android.R.layout.simple_spinner_item);
-//        hour.setAdapter(adapter);
-//        // Specify the layout to use when the list of choices appears
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        hour.setAdapter(adapter);
-//
-//        final Spinner hour2 = (Spinner)view.findViewById(R.id.end_time_spinner_hour);
-//        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getActivity(),
-//                R.array.hour_times, android.R.layout.simple_spinner_item);
-//        hour2.setAdapter(adapter);
-//        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        hour2.setAdapter(adapter2);
-//
-//        final Spinner minute = (Spinner)view.findViewById(R.id.start_time_spinner_minute);
-//        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(getActivity(),
-//                R.array.min_times, android.R.layout.simple_spinner_item);
-//        minute.setAdapter(adapter);
-//        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//
-//        minute.setAdapter(adapter3);
-//
-//
-//        final Spinner minute2 = (Spinner)view.findViewById(R.id.end_time_spinner_minute);
-//        ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(getActivity(),
-//                R.array.min_times, android.R.layout.simple_spinner_item);
-//        minute2.setAdapter(adapter);
-//        adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//
-//        minute.setAdapter(adapter3);
-
-
 
 
         // TODO: Add click-to-edit events
@@ -254,5 +218,7 @@ public class Calendar extends Fragment
     }
 
 
-}
+    }
+
+
 
