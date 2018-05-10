@@ -63,6 +63,10 @@ public class Groceries extends Fragment implements View.OnClickListener {
             list.add(item);
         }
         cursor.close();
+        Set<String> tmp = new HashSet<>();
+        tmp.addAll(list);
+        list.clear();
+        list.addAll(tmp);
         return list;
     }
 
